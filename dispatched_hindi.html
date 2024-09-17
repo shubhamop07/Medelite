@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>दवा डिस्पैच</title>
+  <style>
+    h1 {
+      color: lavender;
+    }
+    .box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 150px;
+      font-size: larger;
+      width: 100%;
+      background: linear-gradient(135deg, #4fc7ff, #2a2a72);
+      border-radius: 5px;
+      transition: background 0.3s ease;
+    }
+    .box:hover {
+      background: linear-gradient(135deg, #2a2a72, #4fc7ff);
+    }
+    .ok {
+      text-transform: capitalize;
+    }
+    .last_options {
+      margin-top: 196px;
+      display: flex;
+      justify-content: center;
+    }
+    .return {
+      color: white;
+      display: flex;
+      justify-content: center;
+      height: 35px;
+      width: 30%;
+      text-decoration: none;
+      text-transform: capitalize;
+      background: linear-gradient(#2a2a72, #4fc7ff);
+      border-radius: 19px;
+      align-items: center;
+      transition: background 0.3s ease;
+    }
+    .return:hover {
+      background: linear-gradient(#4fc7ff, #2a2a72);
+    }
+    #cancel {
+      margin-top: 100px;
+      display: flex;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h1 class="ok" id="dispatchMessage">आपकी दवा भेज दी गई है।<br>इसे ले लें।</h1>
+  </div>
+
+  <div id="medicineList" class="box">
+    <!-- दवाओं की सूची यहाँ दिखाई जाएगी -->
+  </div>
+
+  <div class="last_options">
+    <a href="hindioptions.html" class="return">मुख्य पृष्ठ पर वापस जाएं</a>
+  </div>
+
+  <div id="cancel">
+    <a href="hindioptions.html" class="return">रद्द करें</a>
+  </div>
+
+  <script>
+    // Retrieve the selected medicines from sessionStorage
+    var selectedMedicines = JSON.parse(sessionStorage.getItem('selectedMedicines'));
+    var medicineListContainer = document.getElementById('medicineList');
+
+    if (selectedMedicines && selectedMedicines.length > 0) {
+      var medicineList = document.createElement('ul');
+      selectedMedicines.forEach(function(medicine) {
+        var li = document.createElement('li');
+        li.textContent = medicine;
+        medicineList.appendChild(li);
+      });
+      medicineListContainer.appendChild(medicineList);
+    } else {
+      medicineListContainer.textContent = 'कोई दवाएं चयनित नहीं की गईं।';
+    }
+  </script>
+</body>
+</html>

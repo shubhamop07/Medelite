@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medicine Information</title>
+  <link rel="stylesheet" href="medi.css">
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #f0f0f0;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #2a2a72;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    h1 {
+      font-family: 'Merienda', cursive;
+      font-size: 2.5em;
+    }
+
+    main {
+      padding: 20px;
+      max-width: 1200px;
+      margin: auto;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .medicine-section {
+      margin-bottom: 30px;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background-color: #ffffff;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .medicine-section:hover {
+      background-color: #f5f5f5;
+      transform: scale(1.02);
+    }
+
+    .medicine-section:active {
+      background-color: #e0e0e0;
+      transform: scale(0.98);
+    }
+
+    h2 {
+      font-family: 'Merienda', cursive;
+      font-size: 1.8em;
+      margin-bottom: 10px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    .button {
+      background-color: #007bff;
+      border: none;
+      color: #fff;
+      border-radius: 8px;
+      padding: 10px 20px;
+      font-size: 1em;
+      font-weight: 600;
+      cursor: not-allowed;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      margin: 10px 50px;
+      display: inline-block;
+    }
+
+    .button.active {
+      cursor: pointer;
+      background-color: #007bff;
+    }
+
+    .button.active:hover {
+      background-color: #0056b3;
+      transform: scale(1.05);
+    }
+
+    .button.active:active {
+      background-color: #004494;
+      transform: scale(0.95);
+    }
+
+    .scan-box {
+      border: 2px dashed #007bff;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 1.2em;
+      color: #007bff;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .scan-box:hover {
+      background-color: #e7f1ff;
+      transform: scale(1.05);
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Selected Medicine Information</h1>
+  </header>
+  <main id="medicineInfoContainer">
+    <!-- Medicine information will be injected here -->
+  </main>
+
+  <script>
+    var isScanned = false; // Global variable to track scan status
+
+    // Function to parse query parameters
+    function getQueryParams() {
+      var params = {};
+      var queryString = window.location.search.substring(1);
+      var pairs = queryString.split('&');
+      pairs.forEach(function(pair) {
+        var [key, value] = pair.split('=');
+        if (key) {
+          params[decodeURIComponent(key)] = decodeURIComponent(value || '');
+        }
+      });
+      return params;
+    }
+
+    // Function to create medicine information sections
+    function createMedicineSection(title, medicines) {
+      var section = document.createElement('div');
+      section.className = 'medicine-section';
+
+      var heading = document.createElement('h2');
+      heading.textContent = title;
+      section.appendChild(heading);
+
+      var ul = document.createElement('ul');
+      medicines.forEach(function(med) {
+        var li = document.createElement('li');
+        li.textContent = med;
+        ul.appendChild(li);
+      });
+      section.appendChild(ul);
+
+      return section;
+    }
+
+    // Function to display medicine information based on selected conditions
+    function displayMedicineInfo() {
+      var params = getQueryParams();
+      var conditionsParam = params['conditions'];
+      if (!conditionsParam) {
+        document.getElementById('medicineInfoContainer').innerHTML = '<p>No conditions selected.</p>';
+        return;
+      }
+
+      var selectedConditions = conditionsParam.split(',');
+      var medicineInfoContainer = document.getElementById('medicineInfoContainer');
+      var allMedicines = [];
+
+      // Define the medicine information for each condition
+      var medicineData = {
+        fever: {
+          title: 'Fever Medicines',
+          medicines: [
+            `Paracetamol (Acetaminophen):
+          Dose: 10-15 mg/kg every 4-6 hours.
+          Example: 250-500 mg every 6 hours. \n`,
+            ` Ibuprofen:
+          Dose: 5-10 mg/kg every 6-8 hours.
+         Example: 200-400 mg for children weighing 20-40 kg, every 8 hours.\n
+          Max Daily Dose: 40 mg/kg/day.`
+          ]
+        },
+
+        coldAndCough: {
+          title: 'Cough and Cold Medicines',
+          medicines: [
+            ` Dextromethorphan (Cough Suppressant):
+          Dose: 5-10 mg every 4 hours or 15 mg every 6-8 hours.
+          Max Daily Dose: 60 mg/day.\n
+        
+`,` Cetirizine (Antihistamine for Cold):
+          Dose: 5 mg once daily for children aged 6-12, 10 mg for older teens.
+          Max Daily Dose: 10 mg/day.
+      
+
+`]
+
+        },
+        headache: {
+          title: 'Headache Medicines',
+          medicines: [
+           ` Paracetamol (Acetaminophen):
+          Dose: 10-15 mg/kg every 4-6 hours.
+          Example: 250-500 mg every 6 hours.\n
+        Max Daily Dose: 60 mg/kg/day.\n
+          Simethicone (Gas Relief):
+          Dose: 40-125 mg after meals and at bedtime.\n
+          Max Daily Dose: As directed, typically 500 mg/day.
+`
+          ]
+        },
+
+        stomachPain: {
+          title: 'Stomach Pain Medicines',
+          medicines: [
+            ` Simethicone (Gas Relief for Stomach Pain):\n
+    Dose: 40-125 mg after meals and at bedtime.\n
+    Max Daily Dose: As directed, typically 500 mg/day.
+  
+`
+          ]
+        }
+
+      };
+
+      // Iterate through selected conditions and create sections
+      selectedConditions.forEach(function(condition) {
+        var info = medicineData[condition];
+        if (info) {
+          var section = createMedicineSection(info.title, info.medicines);
+          medicineInfoContainer.appendChild(section);
+          allMedicines = allMedicines.concat(info.medicines);
+        }
+      });
+
+      // Create "Scan Me" box
+      var scanBox = document.createElement('div');
+      scanBox.className = 'scan-box';
+      scanBox.textContent = 'Scan Me';
+      scanBox.onclick = function() {
+        isScanned = true;
+        scanBox.textContent = 'Card Scanned';
+        unlockDispenseButton();
+      };
+      medicineInfoContainer.appendChild(scanBox);
+
+      // Add a single "Dispense All" button to dispense all medicines at once
+      var dispenseAllButton = document.createElement('button');
+      dispenseAllButton.className = 'button';
+      dispenseAllButton.textContent = 'Dispense All Medicines';
+      dispenseAllButton.onclick = function() {
+        if (isScanned) {
+          // Save the selected medicines to sessionStorage before redirecting
+          sessionStorage.setItem('selectedMedicines', JSON.stringify(allMedicines));
+          window.location.href = 'dispatched.html';
+        }
+      };
+      dispenseAllButton.disabled = true; // Initially disabled
+      medicineInfoContainer.appendChild(dispenseAllButton);
+
+      // Add a button to go back
+      var backButton = document.createElement('button');
+      backButton.className = 'button active';
+      backButton.textContent = 'Go Back';
+      backButton.onclick = function() {
+        window.history.back();
+      };
+      medicineInfoContainer.appendChild(backButton);
+
+      // Function to unlock dispense button once card is scanned
+      function unlockDispenseButton() {
+        dispenseAllButton.disabled = false;
+        dispenseAllButton.classList.add('active');
+      }
+    }
+
+    // Execute on page load
+    window.onload = displayMedicineInfo;
+  </script>
+</body>
+</html>

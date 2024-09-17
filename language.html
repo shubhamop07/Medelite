@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;1,400&display=swap" rel="stylesheet">
+  <title>Select Language and Age</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Roboto Condensed", sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #2a2a72, #4fc7ff);
+      color: #fff;
+    }
+
+    .container {
+      text-align: center;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 50px;
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(10px);
+      animation: fadeIn 1.2s ease-in-out;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-bottom: 40px;
+      text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
+      letter-spacing: 1px;
+    }
+
+    p {
+      font-size: 1.5em;
+      margin-bottom: 20px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 15px 30px;
+      margin: 10px;
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 30px;
+      background: linear-gradient(135deg, #4fc7ff, #2a2a72);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s, background 0.3s;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      background: linear-gradient(135deg, #2a2a72, #4fc7ff);
+      transform: scale(1.1);
+    }
+
+    .age-container, .lang-container {
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    .age-label {
+      font-size: 1.5em;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .range {
+      width: 80%;
+      margin: 0 auto;
+    }
+
+    .age-output {
+      font-size: 1.8em;
+      margin-top: 10px;
+      color: #fff;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .active {
+      border: 2px solid #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Select Your Language</h1>
+    <p>भाषा चुनें</p>
+
+    <!-- Language Buttons -->
+    <div class="lang-container">
+      <button id="englishButton" class="button" onclick="selectLanguage('english')">English</button>
+      <button id="hindiButton" class="button" onclick="selectLanguage('hindi')">हिंदी</button>
+    </div>
+
+    <!-- Age Selection -->
+    <div class="age-container">
+      <label for="ageRange" class="age-label">Select Your Age:</label>
+      <input id="ageRange" class="range" type="range" min="0" max="100" value="25" oninput="updateAge(this.value)">
+      <div class="age-output" id="ageDisplay">Age: 25</div>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="submit-container">
+      <button class="button" onclick="submitSelection()">Submit</button>
+    </div>
+  </div>
+
+  <script>
+    let selectedLanguage = '';
+    
+    // Function to handle language selection
+    function selectLanguage(language) {
+      selectedLanguage = language;
+
+      // Reset button styles
+      document.getElementById('englishButton').classList.remove('active');
+      document.getElementById('hindiButton').classList.remove('active');
+      
+      // Highlight the selected language
+      if (language === 'english') {
+        document.getElementById('englishButton').classList.add('active');
+      } else if (language === 'hindi') {
+        document.getElementById('hindiButton').classList.add('active');
+      }
+    }
+
+    // Function to update age display
+    function updateAge(value) {
+      document.getElementById('ageDisplay').textContent = 'Age: ' + value;
+    }
+
+    // Function to handle form submission and redirection
+    function submitSelection() {
+      const age = document.getElementById('ageRange').value;
+      
+      if (!selectedLanguage) {
+        alert('Please select a language.');
+        return;
+      }
+
+      // Redirect based on age and selected language
+      if (age < 18) {
+        if (selectedLanguage === 'english') {
+          window.location.href = 'under18.html';
+        } else if (selectedLanguage === 'hindi') {
+          window.location.href = 'hindiunder18.html';
+        }
+      } else {
+        if (selectedLanguage === 'english') {
+          window.location.href = 'options.html';
+        } else if (selectedLanguage === 'hindi') {
+          window.location.href = 'hindioptions.html';
+        }
+      }
+    }
+  </script>
+
+</body>
+</html>

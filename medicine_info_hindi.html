@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>दवाई की जानकारी</title>
+  <link rel="stylesheet" href="medi.css">
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #f0f0f0;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #2a2a72;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    h1 {
+      font-family: 'Merienda', cursive;
+      font-size: 2.5em;
+    }
+
+    main {
+      padding: 20px;
+      max-width: 1200px;
+      margin: auto;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .medicine-section {
+      margin-bottom: 30px;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background-color: #ffffff;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .medicine-section:hover {
+      background-color: #f5f5f5;
+      transform: scale(1.02);
+    }
+
+    .medicine-section:active {
+      background-color: #e0e0e0;
+      transform: scale(0.98);
+    }
+
+    h2 {
+      font-family: 'Merienda', cursive;
+      font-size: 1.8em;
+      margin-bottom: 10px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    .button {
+      background-color: #007bff;
+      border: none;
+      color: #fff;
+      border-radius: 8px;
+      padding: 10px 20px;
+      font-size: 1em;
+      font-weight: 600;
+      cursor: not-allowed;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      margin: 10px 50px;
+      display: inline-block;
+    }
+
+    .button.active {
+      cursor: pointer;
+      background-color: #007bff;
+    }
+
+    .button.active:hover {
+      background-color: #0056b3;
+      transform: scale(1.05);
+    }
+
+    .button.active:active {
+      background-color: #004494;
+      transform: scale(0.95);
+    }
+
+    .scan-box {
+      border: 2px dashed #007bff;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 1.2em;
+      color: #007bff;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .scan-box:hover {
+      background-color: #e7f1ff;
+      transform: scale(1.05);
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>चयनित दवाइयों की जानकारी</h1>
+  </header>
+  <main id="medicineInfoContainer">
+    <!-- दवाई की जानकारी यहाँ प्रदर्शित होगी -->
+  </main>
+
+  <script>
+    var isScanned = false; // स्कैन स्थिति को ट्रैक करने के लिए ग्लोबल वैरिएबल
+
+    // क्वेरी पैरामीटर को पार्स करने का फ़ंक्शन
+    function getQueryParams() {
+      var params = {};
+      var queryString = window.location.search.substring(1);
+      var pairs = queryString.split('&');
+      pairs.forEach(function(pair) {
+        var [key, value] = pair.split('=');
+        if (key) {
+          params[decodeURIComponent(key)] = decodeURIComponent(value || '');
+        }
+      });
+      return params;
+    }
+
+    // दवाई की जानकारी सेक्शन बनाने का फ़ंक्शन
+    function createMedicineSection(title, medicines) {
+      var section = document.createElement('div');
+      section.className = 'medicine-section';
+
+      var heading = document.createElement('h2');
+      heading.textContent = title;
+      section.appendChild(heading);
+
+      var ul = document.createElement('ul');
+      medicines.forEach(function(med) {
+        var li = document.createElement('li');
+        li.textContent = med;
+        ul.appendChild(li);
+      });
+      section.appendChild(ul);
+
+      return section;
+    }
+
+    // चयनित बीमारियों के आधार पर दवाई की जानकारी दिखाने का फ़ंक्शन
+    function displayMedicineInfo() {
+      var params = getQueryParams();
+      var conditionsParam = params['conditions'];
+      if (!conditionsParam) {
+        document.getElementById('medicineInfoContainer').innerHTML = '<p>कोई बीमारी चयनित नहीं की गई।</p>';
+        return;
+      }
+
+      var selectedConditions = conditionsParam.split(',');
+      var medicineInfoContainer = document.getElementById('medicineInfoContainer');
+      var allMedicines = [];
+
+      // प्रत्येक बीमारी के लिए दवाई की जानकारी
+      var medicineData = {
+        fever: {
+          title: 'बुखार के लिए दवाइयाँ',
+          medicines: [
+            'पेरासिटामोल: 500mg, हर 6 घंटे में',
+            'इबुप्रोफेन: 200mg, हर 8 घंटे में'
+          ]
+        },
+        coldAndCough: {
+          title: 'खांसी और सर्दी के लिए दवाइयाँ',
+          medicines: [
+            'डाइफेनहाइड्रामिन: 25mg, हर 8 घंटे में',
+            'डेक्स्ट्रोमेथोर्फ़न: 10ml, हर 6 घंटे में'
+          ]
+        },
+        headache: {
+          title: 'सिरदर्द के लिए दवाइयाँ',
+          medicines: [
+            'एस्पिरिन: 300mg, हर 4 घंटे में',
+            'एसिटामिनोफेन: 500mg, हर 6 घंटे में'
+          ]
+        },
+        stomachPain: {
+          title: 'पेट दर्द के लिए दवाइयाँ',
+          medicines: [
+            'ओमेप्राज़ोल: 20mg, प्रतिदिन एक बार',
+            'बसकोपैन: 10mg, हर 6 घंटे में'
+          ]
+        }
+      };
+
+      // चयनित बीमारियों के आधार पर सेक्शन बनाएं
+      selectedConditions.forEach(function(condition) {
+        var info = medicineData[condition];
+        if (info) {
+          var section = createMedicineSection(info.title, info.medicines);
+          medicineInfoContainer.appendChild(section);
+          allMedicines = allMedicines.concat(info.medicines);
+        }
+      });
+
+      // "स्कैन करें" बॉक्स बनाएं
+      var scanBox = document.createElement('div');
+      scanBox.className = 'scan-box';
+      scanBox.textContent = 'स्कैन करें';
+      scanBox.onclick = function() {
+        isScanned = true;
+        scanBox.textContent = 'कार्ड स्कैन किया गया';
+        unlockDispenseButton();
+      };
+      medicineInfoContainer.appendChild(scanBox);
+
+      // सभी दवाइयों को एक बार में डिस्पेंस करने के लिए बटन बनाएं
+      var dispenseAllButton = document.createElement('button');
+      dispenseAllButton.className = 'button';
+      dispenseAllButton.textContent = 'सभी दवाइयाँ दें';
+      dispenseAllButton.disabled = true; // पहले से अक्षम
+      dispenseAllButton.onclick = function() {
+        if (isScanned) {
+          sessionStorage.setItem('selectedMedicines', JSON.stringify(allMedicines)); // Store the medicines
+          window.location.href = 'dispatched_hindi.html';
+        }
+      };
+      medicineInfoContainer.appendChild(dispenseAllButton);
+
+      // "वापस जाएं" बटन जोड़ें
+      var backButton = document.createElement('button');
+      backButton.className = 'button active';
+      backButton.textContent = 'वापस जाएं';
+      backButton.onclick = function() {
+        window.history.back();
+      };
+      medicineInfoContainer.appendChild(backButton);
+
+      // कार्ड स्कैन करने के बाद डिस्पेंस बटन को अनलॉक करें
+      function unlockDispenseButton() {
+        dispenseAllButton.disabled = false;
+        dispenseAllButton.classList.add('active');
+      }
+    }
+
+    // पेज लोड होने पर निष्पादित करें
+    window.onload = displayMedicineInfo;
+  </script>
+</body>
+</html>
