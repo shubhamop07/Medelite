@@ -224,6 +224,21 @@
     <div id="voice-control">
       <p>Click the button below and say the condition you want to select:</p>
       <button class="button" onclick="startVoiceRecognition()">Start Voice Recognition</button>
+
+       <!-- New "Concern with Doctor" Button -->
+  <button class="button" onclick="concernWithDoctor()">Concern with Doctor</button>
+</div>
+
+<script>
+  // Function to handle "Concern with Doctor" button click
+  function concernWithDoctor() {
+    // Google Meet meeting link
+    var meetLink = "https://meet.google.com/rsp-znie-rrt"; // Replace with your Google Meet link
+    window.open(meetLink, '_blank');
+  }
+</script>
+
+
     </div>
 
     <!-- Text Input for diseases -->
