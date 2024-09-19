@@ -7,143 +7,180 @@
 
   <title>Med Elite - Medicine Support</title>
   <style>
-    /* Include the updated CSS here */* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Roboto Condensed", sans-serif;
-}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Roboto Condensed", sans-serif;
+    }
 
-body {
-  background-color: #f4f4f4;
-  color: #333;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
+    body {
+      background-color: #f4f4f4;
+      color: #333;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
 
-header {
-  text-align: center;
-}
+    header {
+      text-align: center;
+    }
 
-h1 {
-  font-weight: 700;
-  font-size: 2em; /* Adjusted size to fit within the screen */
-  color: #fff;
-  background: linear-gradient(135deg, #4fc7ff, #7c7cda);
-  padding: 15px; /* Reduced padding */
-  border-radius: 12px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-  margin-bottom: 20px;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-  transition: transform 0.4s;
-}
+    h1 {
+      font-weight: 700;
+      font-size: 2em;
+      color: #fff;
+      background: linear-gradient(135deg, #4fc7ff, #7c7cda);
+      padding: 15px;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+      transition: transform 0.4s;
+    }
 
-h1:hover {
-  transform: scale(1.05);
-}
+    h1:hover {
+      transform: scale(1.05);
+    }
 
-/* Center all content in the main section */
-#button_container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: auto;
-}
+    #button_container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: auto;
+    }
 
-.button {
-  padding: 15px 35px; /* Slightly smaller button */
-  font-size: 1.5em; /* Reduced font size */
-  text-align: center;
-  border: none;
-  background: linear-gradient(135deg, #7c7cda, #4fc7ff);
-  border-radius: 40px;
-  color: #fff;
-  font-weight: 600;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-  cursor: pointer;
-  text-decoration: none;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-}
+    .button {
+      padding: 15px 35px;
+      font-size: 1.5em;
+      text-align: center;
+      border: none;
+      background: linear-gradient(135deg, #7c7cda, #4fc7ff);
+      border-radius: 40px;
+      color: #fff;
+      font-weight: 600;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    }
 
-.button:hover {
-  background: linear-gradient(135deg, #4fc7ff,  #7c7cda);
-  transform: scale(1.1);
-}
+    .button:hover {
+      background: linear-gradient(135deg, #4fc7ff, #7c7cda);
+      transform: scale(1.1);
+    }
 
-/* Flexbox for centering the main content */
-main {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh; /* Fill the entire viewport height */
-}
+    main {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
 
-.divme {
-  display: flex;
-  justify-content: center;
-  gap: 20px; /* Reduced gap between links */
-}
+    .divme {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
 
-.nav-link {
-  color: #2a2a72;
-  text-decoration: none;
-  font-size: 1.2em;
-  font-weight: 600;
-  transition: color 0.3s ease, transform 0.3s ease;
-}
+    .nav-link {
+      color: #2a2a72;
+      text-decoration: none;
+      font-size: 1.2em;
+      font-weight: 600;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
 
-.nav-link:hover {
-  color: #4fc7ff;
-  transform: scale(1.05);
-}
+    .nav-link:hover {
+      color: #4fc7ff;
+      transform: scale(1.05);
+    }
 
-.tab-container {
-  margin-top: 20px;
-}
+    .tab-container {
+      margin-top: 20px;
+    }
 
-.tab-buttons {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 15px;
-}
+    .tab-buttons {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 15px;
+    }
 
-.tab-button {
-  padding: 8px 16px;
-  border: none;
-  background-color:  #7c7cda;
-  color: white;
-  font-weight: 600;
-  cursor: pointer;
-  margin: 0 10px;
-  border-radius: 20px;
-  transition: background-color 0.3s ease;
-}
+    .tab-button {
+      padding: 8px 16px;
+      border: none;
+      background-color: #7c7cda;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      margin: 0 10px;
+      border-radius: 20px;
+      transition: background-color 0.3s ease;
+    }
 
-.tab-button:hover {
-  background-color: #4fc7ff;
-}
+    .tab-button:hover {
+      background-color: #4fc7ff;
+    }
 
-.tab-button.active {
-  background-color: #4fc7ff;
-}
+    .tab-button.active {
+      background-color: #4fc7ff;
+    }
 
-.tab-content {
+    .tab-content {
+      display: none;
+      text-align: left;
+      background-color: rgba(255, 255, 255, 0.85);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
 
-  display: none;
-  text-align: left;
-  background-color: rgba(255, 255, 255, 0.85);
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-}
+    .tab-content.active {
+      display: block;
+    }
 
-.tab-content.active {
-  display: block;
-}
+    /* Mobile styles */
+    @media (max-width: 768px) {
+      body {
+        padding: 20px;
+      }
 
+      h1 {
+        font-size: 1.5em; /* Smaller heading */
+        padding: 10px;
+        margin-bottom: 15px;
+      }
+
+      .button {
+        padding: 10px 25px; /* Adjust button padding */
+        font-size: 1.2em;
+      }
+
+      .nav-link {
+        font-size: 1em; /* Smaller font for links */
+      }
+
+      .divme {
+        flex-direction: column; /* Stack links on top of each other */
+        gap: 10px;
+      }
+
+      .tab-buttons {
+        flex-direction: column;
+      }
+
+      .tab-button {
+        margin: 5px 0;
+        width: 100%; /* Full width buttons for mobile */
+        text-align: center;
+      }
+
+      .tab-content {
+        padding: 20px; /* Adjust tab content padding */
+      }
+    }
   </style>
 </head>
 <body>
@@ -160,7 +197,6 @@ main {
       <a href="language.html" class="button">ENTER TO GET MEDICINE</a>
     </div>
 
-    <!-- New tab section for medicine availability -->
     <div class="tab-container">
       <div class="tab-buttons">
         <button class="tab-button active" onclick="openTab(event, 'english')">Medicine Availability (English)</button>
