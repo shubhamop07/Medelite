@@ -224,31 +224,48 @@
         }
       });
 
-      // "स्कैन करें" बॉक्स बनाएं
-      var scanBox = document.createElement('div');
+       // Create "Scan Me" box
+       var scanBox = document.createElement('div');
       scanBox.className = 'scan-box';
       scanBox.textContent = 'स्कैन करें';
-      scanBox.onclick = function() {
-        isScanned = true;
-        scanBox.textContent = 'कार्ड स्कैन किया गया';
-        unlockDispenseButton();
+
+      scanBox.onclick = async function() {
+        try {
+          scanBox.textContent = 'Scanning..'; // Show scanning message
+          const response = await fetch('http://172.16.42.207:5001/rfid-scan', {
+            method: 'POST',
+          });
+          const data = await response.json();
+          console.log('RFID ID:', data.rfid);
+          
+          // Mark scan as completed and change text
+          isScanned = true;
+          scanBox.textContent = 'कार्ड स्कैन किया गया';
+          
+          // Unlock the dispense button if the card is scanned
+          unlockDispenseButton();
+        } catch (error) {
+          console.error('Error scanning RFID:', error);
+          scanBox.textContent = 'अक्षम';
+        }
       };
       medicineInfoContainer.appendChild(scanBox);
 
-      // सभी दवाइयों को एक बार में डिस्पेंस करने के लिए बटन बनाएं
+      // Add a single "Dispense All" button to dispense all medicines at once
       var dispenseAllButton = document.createElement('button');
       dispenseAllButton.className = 'button';
       dispenseAllButton.textContent = 'सभी दवाइयाँ दें';
-      dispenseAllButton.disabled = true; // पहले से अक्षम
       dispenseAllButton.onclick = function() {
         if (isScanned) {
-          sessionStorage.setItem('selectedMedicines', JSON.stringify(allMedicines)); // Store the medicines
-          window.location.href = 'dispatched_hindi.html';
+          // Save the selected medicines to sessionStorage before redirecting
+          sessionStorage.setItem('selectedMedicines', JSON.stringify(allMedicines));
+          window.location.href = 'dispatched.html';
         }
       };
+      dispenseAllButton.disabled = true; // Initially disabled
       medicineInfoContainer.appendChild(dispenseAllButton);
 
-      // "वापस जाएं" बटन जोड़ें
+      // Add a button to go back
       var backButton = document.createElement('button');
       backButton.className = 'button active';
       backButton.textContent = 'वापस जाएं';
@@ -257,14 +274,15 @@
       };
       medicineInfoContainer.appendChild(backButton);
 
-      // कार्ड स्कैन करने के बाद डिस्पेंस बटन को अनलॉक करें
+      // Function to unlock dispense button once card is scanned
       function unlockDispenseButton() {
         dispenseAllButton.disabled = false;
         dispenseAllButton.classList.add('active');
+        dispenseAllButton.style.backgroundColor = '#4fc7ff'; // Change the color on scan
       }
     }
 
-    // पेज लोड होने पर निष्पादित करें
+    // Execute on page load
     window.onload = displayMedicineInfo;
   </script>
 </body>
