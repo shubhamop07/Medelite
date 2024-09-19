@@ -3,7 +3,7 @@
 <head>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&family=Montserrat:ital,wght@0,100..900&display=swap" rel="stylesheet">
   
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,7 +19,7 @@
     }
 
     header {
-      background:linear-gradient(#4fc7ff, #7c7cda);
+      background: linear-gradient(#4fc7ff, #7c7cda);
       color: #fff;
       text-align: center;
       padding: 20px;
@@ -75,7 +75,7 @@
     }
 
     .button {
-      background-color: #4fc7ff;
+      background-color: transparent; /* Button is transparent by default */
       border: none;
       color: #fff;
       border-radius: 8px;
@@ -89,8 +89,8 @@
     }
 
     .button.active {
+      background-color: #4fc7ff; /* Active button has a color */
       cursor: pointer;
-      background-color:  #4fc7ff;
     }
 
     .button.active:hover {
@@ -99,18 +99,18 @@
     }
 
     .button.active:active {
-      background-color:  #4fc7ff;
+      background-color: #4fc7ff;
       transform: scale(0.95);
     }
 
     .scan-box {
-      border: 2px dashed  #4fc7ff;
+      border: 2px dashed #4fc7ff;
       border-radius: 10px;
       padding: 20px;
       text-align: center;
       margin-bottom: 20px;
       font-size: 1.2em;
-      color:  #4fc7ff;
+      color: #4fc7ff;
       font-weight: bold;
       cursor: pointer;
       transition: background-color 0.3s ease, transform 0.3s ease;
@@ -227,10 +227,26 @@
       var scanBox = document.createElement('div');
       scanBox.className = 'scan-box';
       scanBox.textContent = 'Scan Me';
-      scanBox.onclick = function() {
-        isScanned = true;
-        scanBox.textContent = 'Card Scanned';
-        unlockDispenseButton();
+
+      scanBox.onclick = async function() {
+        try {
+          scanBox.textContent = 'Scanning..'; // Show scanning message
+          const response = await fetch('http://172.16.42.207:5001/rfid-scan', {
+            method: 'POST',
+          });
+          const data = await response.json();
+          console.log('RFID ID:', data.rfid);
+          
+          // Mark scan as completed and change text
+          isScanned = true;
+          scanBox.textContent = 'Card Scanned';
+          
+          // Unlock the dispense button if the card is scanned
+          unlockDispenseButton();
+        } catch (error) {
+          console.error('Error scanning RFID:', error);
+          scanBox.textContent = 'Scan Failed';
+        }
       };
       medicineInfoContainer.appendChild(scanBox);
 
@@ -261,6 +277,7 @@
       function unlockDispenseButton() {
         dispenseAllButton.disabled = false;
         dispenseAllButton.classList.add('active');
+        dispenseAllButton.style.backgroundColor = '#4fc7ff'; // Change the color on scan
       }
     }
 
