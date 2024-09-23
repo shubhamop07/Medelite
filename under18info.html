@@ -185,60 +185,105 @@
 
       // Define the medicine information for each condition
       var medicineData = {
-        fever: {
-          title: 'Fever Medicines',
-          medicines: [
-            `Paracetamol (Acetaminophen):
-          Dose: 10-15 mg/kg every 4-6 hours.
-          Example: 250-500 mg every 6 hours. \n`,
-            ` Ibuprofen:
-          Dose: 5-10 mg/kg every 6-8 hours.
-         Example: 200-400 mg for children weighing 20-40 kg, every 8 hours.\n
-          Max Daily Dose: 40 mg/kg/day.`
-          ]
-        },
+  fever: {
+    title: 'Fever Medicines',
+    medicines: [
+      `Paracetamol (Acetaminophen):
+      Dose: 10-15 mg/kg every 4-6 hours.
+      Example: 250-500 mg every 6 hours.`,
+      `Ibuprofen:
+      Dose: 5-10 mg/kg every 6-8 hours.
+      Example: 200-400 mg for children weighing 20-40 kg, every 8 hours.
+      Max Daily Dose: 40 mg/kg/day.`
+    ]
+  },
 
-        coldAndCough: {
-          title: 'Cough and Cold Medicines',
-          medicines: [
-            ` Dextromethorphan (Cough Suppressant):
-          Dose: 5-10 mg every 4 hours or 15 mg every 6-8 hours.
-          Max Daily Dose: 60 mg/day.\n
-        
-`,` Cetirizine (Antihistamine for Cold):
-          Dose: 5 mg once daily for children aged 6-12, 10 mg for older teens.
-          Max Daily Dose: 10 mg/day.
-      
+  coldAndCough: {
+    title: 'Cough and Cold Medicines',
+    medicines: [
+      `Dextromethorphan (Cough Suppressant):
+      Dose: 5-10 mg every 4 hours or 15 mg every 6-8 hours.
+      Max Daily Dose: 60 mg/day.`,
+      `Cetirizine (Antihistamine for Cold):
+      Dose: 5 mg once daily for children aged 6-12, 10 mg for older teens.
+      Max Daily Dose: 10 mg/day.`
+    ]
+  },
 
-`]
+  headache: {
+    title: 'Headache Medicines',
+    medicines: [
+      `Paracetamol (Acetaminophen):
+      Dose: 10-15 mg/kg every 4-6 hours.
+      Example: 250-500 mg every 6 hours.
+      Max Daily Dose: 60 mg/kg/day.`,
+      `Simethicone (Gas Relief):
+      Dose: 40-125 mg after meals and at bedtime.
+      Max Daily Dose: As directed, typically 500 mg/day.`
+    ]
+  },
 
-        },
-        headache: {
-          title: 'Headache Medicines',
-          medicines: [
-           ` Paracetamol (Acetaminophen):
-          Dose: 10-15 mg/kg every 4-6 hours.
-          Example: 250-500 mg every 6 hours.\n
-        Max Daily Dose: 60 mg/kg/day.\n
-          Simethicone (Gas Relief):
-          Dose: 40-125 mg after meals and at bedtime.\n
-          Max Daily Dose: As directed, typically 500 mg/day.
-`
-          ]
-        },
+  stomachPain: {
+    title: 'Stomach Pain Medicines',
+    medicines: [
+      `Simethicone (Gas Relief for Stomach Pain):
+      Dose: 40-125 mg after meals and at bedtime.
+      Max Daily Dose: As directed, typically 500 mg/day.`
+    ]
+  },
 
-        stomachPain: {
-          title: 'Stomach Pain Medicines',
-          medicines: [
-            ` Simethicone (Gas Relief for Stomach Pain):\n
-    Dose: 40-125 mg after meals and at bedtime.\n
-    Max Daily Dose: As directed, typically 500 mg/day.
-  
-`
-          ]
-        }
+  eyeIrritation: {
+    title: 'Eye Irritation Medicines',
+    medicines: [
+      `Artificial Tears:
+      Use as needed for lubrication. Safe for all ages.`,
+      `Antihistamine Eye Drops (e.g., Ketotifen):
+      Use as directed for allergic reactions. Consult a doctor for children under 3.`
+    ]
+  },
 
-      };
+  bodyPain: {
+    title: 'Body Pain Medicines',
+    medicines: [
+      `Paracetamol (Acetaminophen):
+      Dose: 10-15 mg/kg every 4-6 hours.
+      Max Daily Dose: 60 mg/kg/day.`,
+      `Ibuprofen:
+      Dose: 5-10 mg/kg every 6-8 hours.
+      Max Daily Dose: 40 mg/kg/day.`
+    ]
+  },
+
+  bpsugar: {
+    title: 'Blood Pressure Management',
+    medicines: [
+      `Lifestyle Modifications:
+      Diet and exercise are first-line treatments for children with hypertension.`,
+      `Medication (if prescribed):
+      Consult a pediatrician for appropriate medication based on age and condition.`
+    ]
+  },
+
+  bpsugar: {
+    title: 'Diabetes Management',
+    medicines: [
+      `Metformin (for Type 2 Diabetes):
+      Dosing varies; consult a doctor for pediatric dosing.`,
+      `Insulin (for Type 1 Diabetes):
+      Dosing is individualized based on blood glucose levels and doctor’s advice.`
+    ]
+  },
+
+  viralDiseases: {
+    title: 'Viral Disease Treatments',
+    medicines: [
+      `Antiviral Medications (e.g., Oseltamivir for Influenza):
+      Consult a doctor for appropriate dosing for children.`,
+      `Supportive Care:
+      Ensure hydration and rest; consult a healthcare provider as needed.`
+    ]
+  }
+};
 
       // Iterate through selected conditions and create sections
       selectedConditions.forEach(function(condition) {
