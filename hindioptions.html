@@ -2,13 +2,13 @@
 <html lang="hi">
 <head>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="shortcut icon" href="logo.png" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>दवा विकल्प</title>
+  <title>दवाइयों के विकल्प</title>
   <link rel="stylesheet" href="medi.css">
   <style>
     body {
@@ -20,7 +20,7 @@
     }
 
     header {
-      background: linear-gradient(#4fc7ff, #7c7cda);
+      background:linear-gradient(#4fc7ff, #7c7cda);
       color: #fff;
       text-align: center;
       padding: 20px;
@@ -56,7 +56,7 @@
       border-radius: 8px;
       padding: 10px;
       box-sizing: border-box;
-      width: 100%; 
+      width: 100%;  /* चेकबॉक्स कंटेनर को पूर्ण चौड़ाई दें */
       transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
     }
 
@@ -84,7 +84,7 @@
       cursor: pointer;
       appearance: none;
       -webkit-appearance: none;
-      border: 2px solid  #4fc7ff;
+      border: 2px solid #4fc7ff;
       border-radius: 4px;
       width: 25px;
       height: 25px;
@@ -100,7 +100,7 @@
       left: 50%;
       width: 12px;
       height: 6px;
-      border: solid  #4fc7ff;
+      border: solid #4fc7ff;
       border-width: 0 0 2px 2px;
       transform: rotate(45deg) translate(-50%, -50%);
       opacity: 0;
@@ -108,8 +108,8 @@
     }
 
     .option-checkbox input[type="checkbox"]:checked {
-      background-color:  #4fc7ff;
-      border-color:  #4fc7ff;
+      background-color:#4fc7ff;
+      border-color: #4fc7ff;
     }
 
     .option-checkbox input[type="checkbox"]:checked::before {
@@ -122,11 +122,11 @@
     }
 
     .option-checkbox:hover label {
-      color:  #4fc7ff;
+      color: #4fc7ff;
     }
 
     .button {
-      background-color:  #4fc7ff;
+      background-color: #4fc7ff;
       border: none;
       color: #fff;
       border-radius: 8px;
@@ -139,12 +139,12 @@
     }
 
     .button:hover {
-      background-color:  #4fc7ff;
+      background-color: #4fc7ff;
       transform: scale(1.05);
     }
 
     .button:active {
-      background-color:  #4fc7ff;
+      background-color:  #7c7cda;
       transform: scale(0.95);
     }
 
@@ -190,108 +190,111 @@
   </header>
   <main>
     <div class="options-container">
-      <!-- बुखार चेकबॉक्स विकल्प -->
+      <!-- मौजूदा स्थितियां -->
       <div class="option-checkbox">
         <input type="checkbox" id="feverCheck" value="fever">
-        <img src="fever.webp" alt="बुखार">
+        <img src="./fever.webp" alt="बुखार">
         <label for="feverCheck">बुखार</label>
       </div>
-      <!-- खांसी और सर्दी चेकबॉक्स विकल्प -->
       <div class="option-checkbox">
         <input type="checkbox" id="coldCoughCheck" value="coldAndCough">
-        <img src="cough and cold.webp" alt="खांसी और सर्दी">
-        <label for="coldCoughCheck">खांसी सर्दी</label>
+        <img src="./cough and cold.webp" alt="जुकाम और खांसी">
+        <label for="coldCoughCheck">जुकाम और खांसी</label>
       </div>
-      <!-- सिरदर्द चेकबॉक्स विकल्प -->
       <div class="option-checkbox">
         <input type="checkbox" id="headacheCheck" value="headache">
-        <img src="headache.jpeg" alt="सिरदर्द">
+        <img src="./headache.jpeg" alt="सिरदर्द">
         <label for="headacheCheck">सिरदर्द</label>
       </div>
-      <!-- पेट दर्द चेकबॉक्स विकल्प -->
       <div class="option-checkbox">
         <input type="checkbox" id="stomachPainCheck" value="stomachPain">
-        <img src="stomach pain.webp" alt="पेट दर्द">
+        <img src="./stomach pain.webp" alt="पेट दर्द">
         <label for="stomachPainCheck">पेट दर्द</label>
+      </div>
+      
+      <!-- नई स्थितियां -->
+      <div class="option-checkbox">
+        <input type="checkbox" id="eyeIrritationCheck" value="eyeIrritation">
+        <img src="./images (1).jpeg" alt="आँखों में जलन">
+        <label for="eyeIrritationCheck">आँखों में जलन</label>
+      </div>
+      <div class="option-checkbox">
+        <input type="checkbox" id="viralDiseasesCheck" value="viralDiseases">
+        <img src="./viral-infection.png" alt="वायरल बीमारियाँ">
+        <label for="viralDiseasesCheck">वायरल बीमारियाँ</label>
+      </div>
+      <div class="option-checkbox">
+        <input type="checkbox" id="bodyPainCheck" value="bodyPain">
+        <img src="./images (2).jpeg" alt="शरीर में दर्द">
+        <label for="bodyPainCheck">शरीर में दर्द</label>
+      </div>
+      <div class="option-checkbox">
+        <input type="checkbox" id="bpSugarCheck" value="bpSugar">
+        <img src="./bp suger.jpg" alt="बीपी और शुगर">
+        <label for="bpSugarCheck">बीपी और शुगर</label>
       </div>
     </div>
 
-    <!-- OK बटन -->
-    <button class="button" onclick="confirmSelection()">ठीक है</button>
+    <!-- ओके बटन -->
+    <button class="button" onclick="confirmSelection()">ओके</button>
 
-    <!-- आवाज नियंत्रण अनुभाग -->
+    <!-- वॉइस कंट्रोल सेक्शन -->
     <div id="voice-control">
-      <p>नीचे दिए गए बटन पर क्लिक करें और उस स्थिति को बोलें जिसे आप चुनना चाहते हैं:</p>
-      <button class="button" onclick="startVoiceRecognition()">आवाज पहचान शुरू करें</button>
-
-      <!-- "डॉक्टर से संपर्क" बटन -->
-      <button class="button" onclick="concernWithDoctor()">डॉक्टर से संपर्क करें</button>
+      <p>नीचे बटन पर क्लिक करें और वह स्थिति कहें जिसे आप चुनना चाहते हैं:</p>
+      <button class="button" onclick="startVoiceRecognition()">वॉइस रिकग्निशन शुरू करें</button>
+      <button class="button" onclick="concernWithDoctor()">डॉक्टर से सलाह लें</button>
     </div>
-
-    <script>
-      // "डॉक्टर से संपर्क करें" बटन की फ़ंक्शन हैंडलिंग
-      function concernWithDoctor() {
-        // Google Meet बैठक लिंक
-        var meetLink = "https://meet.google.com/emf-qmwm-qmf"; 
-        window.open(meetLink, '_blank');
-      }
-    </script>
 
     <!-- रोगों के लिए टेक्स्ट इनपुट -->
     <div>
-      <input placeholder="यहां रोग दर्ज करें" class="text" id="diseasesInput">
+      <input placeholder="यहाँ रोग दर्ज करें" class="text" id="diseasesInput">
     </div>
   </main>
 
   <script>
-    // चयन की पुष्टि करने और चयनित स्थितियों के साथ नए पृष्ठ पर पुनः निर्देशित करने की फ़ंक्शन
     function confirmSelection() {
       var selectedConditions = [];
-      if (document.getElementById('feverCheck').checked) {
-        selectedConditions.push('fever');
-      }
-      if (document.getElementById('coldCoughCheck').checked) {
-        selectedConditions.push('coldAndCough');
-      }
-      if (document.getElementById('headacheCheck').checked) {
-        selectedConditions.push('headache');
-      }
-      if (document.getElementById('stomachPainCheck').checked) {
-        selectedConditions.push('stomachPain');
-      }
+      if (document.getElementById('feverCheck').checked) selectedConditions.push('fever');
+      if (document.getElementById('coldCoughCheck').checked) selectedConditions.push('coldAndCough');
+      if (document.getElementById('headacheCheck').checked) selectedConditions.push('headache');
+      if (document.getElementById('stomachPainCheck').checked) selectedConditions.push('stomachPain');
+      if (document.getElementById('eyeIrritationCheck').checked) selectedConditions.push('eyeIrritation');
+      if (document.getElementById('viralDiseasesCheck').checked) selectedConditions.push('viralDiseases');
+      if (document.getElementById('bodyPainCheck').checked) selectedConditions.push('bodyPain');
+      if (document.getElementById('bpSugarCheck').checked) selectedConditions.push('bpSugar');
 
       if (selectedConditions.length === 0) {
         alert('कृपया कम से कम एक स्थिति चुनें।');
         return;
       }
 
-      // चयनित स्थितियों को क्वेरी पैरामीटर के रूप में एनकोड करें
       var conditionsParam = encodeURIComponent(selectedConditions.join(','));
       var url = 'medicine_info_hindi.html?conditions=' + conditionsParam;
-
-      // नए पृष्ठ पर पुनः निर्देशित करें
       window.location.href = url;
     }
 
-    // आवाज पहचान शुरू करने और आवाज़ के आधार पर चेकबॉक्स का चयन करने की फ़ंक्शन
     function startVoiceRecognition() {
       if ('webkitSpeechRecognition' in window) {
         var recognition = new webkitSpeechRecognition();
         recognition.lang = 'hi-IN';
         recognition.onstart = function() {
-          console.log('आवाज पहचान शुरू हुई। माइक में बोलें।');
+          console.log('वॉइस रिकग्निशन शुरू हो गया। माइक्रोफोन में बोलें।');
         };
         recognition.onresult = function(event) {
           var speechResult = event.results[0][0].transcript.toLowerCase();
           console.log('परिणाम प्राप्त हुआ: ' + speechResult);
 
-          // स्थितियों की सूची जिनकी जाँच की जानी चाहिए
           var conditions = {
             'बुखार': 'feverCheck',
-            'सर्दी': 'coldCoughCheck',
+            'जुकाम': 'coldCoughCheck',
             'खांसी': 'coldCoughCheck',
             'सिरदर्द': 'headacheCheck',
-            'पेट दर्द': 'stomachPainCheck'
+            'पेट दर्द': 'stomachPainCheck',
+            'आँखों में जलन': 'eyeIrritationCheck',
+            'वायरल बीमारियाँ': 'viralDiseasesCheck',
+            'शरीर में दर्द': 'bodyPainCheck',
+            'बीपी': 'bpSugarCheck',
+            'शुगर': 'bpSugarCheck'
           };
 
           var conditionsFound = false;
@@ -304,21 +307,20 @@
           });
 
           if (conditionsFound) {
-            // आवाज़ के आधार पर चयन करने के बाद, चयन की पुष्टि करें
             confirmSelection();
           } else {
-            alert('कोई मान्यता प्राप्त स्थिति नहीं मिली। कृपया पुनः प्रयास करें।');
+            alert('कोई मान्यता प्राप्त स्थिति नहीं मिली। कृपया फिर से प्रयास करें।');
           }
         };
         recognition.onerror = function(event) {
-          console.log('पहचान में त्रुटि आई: ' + event.error);
+          console.log('रिकग्निशन में त्रुटि आई: ' + event.error);
         };
         recognition.onend = function() {
-          console.log('आवाज पहचान समाप्त हो गई।');
+          console.log('वॉइस रिकग्निशन समाप्त हुआ।');
         };
         recognition.start();
       } else {
-        alert('आपका ब्राउज़र आवाज पहचान का समर्थन नहीं करता है। कृपया Chrome या अन्य संगत ब्राउज़र का उपयोग करें।');
+        alert('आपका ब्राउज़र वॉइस रिकग्निशन का समर्थन नहीं करता है। कृपया Chrome या किसी संगत ब्राउज़र का उपयोग करें।');
       }
     }
   </script>

@@ -8,7 +8,7 @@
   
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>दवाई की जानकारी</title>
+  <title>दवा की जानकारी</title>
   <link rel="stylesheet" href="medi.css">
   <style>
     body {
@@ -20,7 +20,7 @@
     }
 
     header {
-      background:linear-gradient(#4fc7ff, #7c7cda) ;
+      background: linear-gradient(#4fc7ff, #7c7cda);
       color: #fff;
       text-align: center;
       padding: 20px;
@@ -76,7 +76,7 @@
     }
 
     .button {
-      background-color:#4fc7ff;
+      background-color: transparent; /* Button is transparent by default */
       border: none;
       color: #fff;
       border-radius: 8px;
@@ -90,8 +90,8 @@
     }
 
     .button.active {
+      background-color: #4fc7ff; /* Active button has a color */
       cursor: pointer;
-      background-color: #4fc7ff;
     }
 
     .button.active:hover {
@@ -105,13 +105,13 @@
     }
 
     .scan-box {
-      border: 2px dashed  #4fc7ff;
+      border: 2px dashed #4fc7ff;
       border-radius: 10px;
       padding: 20px;
       text-align: center;
       margin-bottom: 20px;
       font-size: 1.2em;
-      color:  #4fc7ff;
+      color: #4fc7ff;
       font-weight: bold;
       cursor: pointer;
       transition: background-color 0.3s ease, transform 0.3s ease;
@@ -126,16 +126,16 @@
 </head>
 <body>
   <header>
-    <h1>चयनित दवाइयों की जानकारी</h1>
+    <h1>चयनित दवाओं की जानकारी</h1>
   </header>
   <main id="medicineInfoContainer">
-    <!-- दवाई की जानकारी यहाँ प्रदर्शित होगी -->
+    <!-- दवा की जानकारी यहाँ प्रदर्शित की जाएगी -->
   </main>
 
   <script>
-    var isScanned = false; // स्कैन स्थिति को ट्रैक करने के लिए ग्लोबल वैरिएबल
+    var isScanned = false; // स्कैन स्थिति ट्रैक करने के लिए ग्लोबल वैरिएबल
 
-    // क्वेरी पैरामीटर को पार्स करने का फ़ंक्शन
+    // क्वेरी पैरामीटर्स प्राप्त करने के लिए फ़ंक्शन
     function getQueryParams() {
       var params = {};
       var queryString = window.location.search.substring(1);
@@ -149,7 +149,7 @@
       return params;
     }
 
-    // दवाई की जानकारी सेक्शन बनाने का फ़ंक्शन
+    // दवा की जानकारी सेक्शन बनाने के लिए फ़ंक्शन
     function createMedicineSection(title, medicines) {
       var section = document.createElement('div');
       section.className = 'medicine-section';
@@ -169,12 +169,12 @@
       return section;
     }
 
-    // चयनित बीमारियों के आधार पर दवाई की जानकारी दिखाने का फ़ंक्शन
+    // चयनित स्थितियों के आधार पर दवा की जानकारी दिखाने के लिए फ़ंक्शन
     function displayMedicineInfo() {
       var params = getQueryParams();
       var conditionsParam = params['conditions'];
       if (!conditionsParam) {
-        document.getElementById('medicineInfoContainer').innerHTML = '<p>कोई बीमारी चयनित नहीं की गई।</p>';
+        document.getElementById('medicineInfoContainer').innerHTML = '<p>कोई स्थिति चयनित नहीं की गई।</p>';
         return;
       }
 
@@ -182,39 +182,67 @@
       var medicineInfoContainer = document.getElementById('medicineInfoContainer');
       var allMedicines = [];
 
-      // प्रत्येक बीमारी के लिए दवाई की जानकारी
+      // प्रत्येक स्थिति के लिए दवा की जानकारी परिभाषित करें
       var medicineData = {
         fever: {
-          title: 'बुखार के लिए दवाइयाँ',
+          title: 'बुखार की दवाएँ',
           medicines: [
-            'पेरासिटामोल: 500mg, हर 6 घंटे में',
-            'इबुप्रोफेन: 200mg, हर 8 घंटे में'
+            'पैरासिटामोल: 500mg, हर 6 घंटे में',
+            'आईबुप्रोफेन: 200mg, हर 8 घंटे में'
           ]
         },
         coldAndCough: {
-          title: 'खांसी और सर्दी के लिए दवाइयाँ',
+          title: 'जुकाम और खांसी की दवाएँ',
           medicines: [
-            'डाइफेनहाइड्रामिन: 25mg, हर 8 घंटे में',
-            'डेक्स्ट्रोमेथोर्फ़न: 10ml, हर 6 घंटे में'
+            'डिफेनहाइड्रामाइन: 25mg, हर 8 घंटे में',
+            'डेक्सट्रोमेथोर्फ़ैन: 10ml, हर 6 घंटे में'
           ]
         },
         headache: {
-          title: 'सिरदर्द के लिए दवाइयाँ',
+          title: 'सिरदर्द की दवाएँ',
           medicines: [
             'एस्पिरिन: 300mg, हर 4 घंटे में',
             'एसिटामिनोफेन: 500mg, हर 6 घंटे में'
           ]
         },
         stomachPain: {
-          title: 'पेट दर्द के लिए दवाइयाँ',
+          title: 'पेट दर्द की दवाएँ',
           medicines: [
-            'ओमेप्राज़ोल: 20mg, प्रतिदिन एक बार',
-            'बसकोपैन: 10mg, हर 6 घंटे में'
+            'ओमेप्राज़ोल: 20mg, दिन में एक बार',
+            'बुस्कोपैन: 10mg, हर 6 घंटे में'
+          ]
+        },
+        eyeIrritation: {
+          title: 'आँखों में जलन की दवाएँ',
+          medicines: [
+            'आर्टिफिशियल टियर्स: 1-2 बूँदें हर 4 घंटे में',
+            'सिप्रोफ्लोक्सासिन आई ड्रॉप्स: दिन में 2-3 बार लगाएं'
+          ]
+        },
+        viralDiseases: {
+          title: 'वायरल बीमारियों की दवाएँ',
+          medicines: [
+            'एसिक्लोविर: 200mg, हर 4 घंटे में',
+            'ओसेल्टामिविर: 75mg, दिन में दो बार 5 दिनों के लिए'
+          ]
+        },
+        bodyPain: {
+          title: 'शरीर में दर्द की दवाएँ',
+          medicines: [
+            'आईबुप्रोफेन: 400mg, हर 6 घंटे में',
+            'नेप्रोक्सन: 250mg, हर 8 घंटे में'
+          ]
+        },
+        bpSugar: {
+          title: 'बीपी और शुगर की दवाएँ',
+          medicines: [
+            'मेटफॉर्मिन: 500mg, दिन में दो बार',
+            'एम्लोडिपिन: 5mg, दिन में एक बार'
           ]
         }
       };
 
-      // चयनित बीमारियों के आधार पर सेक्शन बनाएं
+      // चयनित स्थितियों को प्रदर्शित करें
       selectedConditions.forEach(function(condition) {
         var info = medicineData[condition];
         if (info) {
@@ -224,48 +252,48 @@
         }
       });
 
-       // Create "Scan Me" box
-       var scanBox = document.createElement('div');
+      // "स्कैन मी" बॉक्स बनाएं
+      var scanBox = document.createElement('div');
       scanBox.className = 'scan-box';
       scanBox.textContent = 'स्कैन करें';
 
       scanBox.onclick = async function() {
         try {
-          scanBox.textContent = 'Scanning..'; // Show scanning message
+          scanBox.textContent = 'स्कैन हो रहा है..'; // स्कैनिंग संदेश दिखाएं
           const response = await fetch('http://172.16.42.207:5001/rfid-scan', {
             method: 'POST',
           });
           const data = await response.json();
           console.log('RFID ID:', data.rfid);
           
-          // Mark scan as completed and change text
+          // स्कैन को पूरा के रूप में चिह्नित करें और पाठ बदलें
           isScanned = true;
-          scanBox.textContent = 'कार्ड स्कैन किया गया';
+          scanBox.textContent = 'कार्ड स्कैन हो गया';
           
-          // Unlock the dispense button if the card is scanned
+          // कार्ड स्कैन होने पर डिस्पेंस बटन को अनलॉक करें
           unlockDispenseButton();
         } catch (error) {
-          console.error('Error scanning RFID:', error);
-          scanBox.textContent = 'अक्षम';
+          console.error('RFID स्कैन करते समय त्रुटि:', error);
+          scanBox.textContent = 'स्कैन विफल हो गया';
         }
       };
       medicineInfoContainer.appendChild(scanBox);
 
-      // Add a single "Dispense All" button to dispense all medicines at once
+      // सभी दवाओं को एक साथ डिस्पेंस करने के लिए "सभी दवाएँ निकालें" बटन जोड़ें
       var dispenseAllButton = document.createElement('button');
       dispenseAllButton.className = 'button';
-      dispenseAllButton.textContent = 'सभी दवाइयाँ दें';
+      dispenseAllButton.textContent = 'सभी दवाएँ निकालें';
       dispenseAllButton.onclick = function() {
         if (isScanned) {
-          // Save the selected medicines to sessionStorage before redirecting
+          // रीडायरेक्ट करने से पहले चयनित दवाओं को sessionStorage में सहेजें
           sessionStorage.setItem('selectedMedicines', JSON.stringify(allMedicines));
           window.location.href = 'dispatched.html';
         }
       };
-      dispenseAllButton.disabled = true; // Initially disabled
+      dispenseAllButton.disabled = true; // प्रारंभ में निष्क्रिय
       medicineInfoContainer.appendChild(dispenseAllButton);
 
-      // Add a button to go back
+      // वापस जाने के लिए बटन जोड़ें
       var backButton = document.createElement('button');
       backButton.className = 'button active';
       backButton.textContent = 'वापस जाएं';
@@ -274,15 +302,15 @@
       };
       medicineInfoContainer.appendChild(backButton);
 
-      // Function to unlock dispense button once card is scanned
+      // कार्ड स्कैन होने पर डिस्पेंस बटन अनलॉक करने का फ़ंक्शन
       function unlockDispenseButton() {
         dispenseAllButton.disabled = false;
         dispenseAllButton.classList.add('active');
-        dispenseAllButton.style.backgroundColor = '#4fc7ff'; // Change the color on scan
+        dispenseAllButton.style.backgroundColor = '#4fc7ff'; // स्कैन पर रंग बदलें
       }
     }
 
-    // Execute on page load
+    // पेज लोड होने पर निष्पादित करें
     window.onload = displayMedicineInfo;
   </script>
 </body>

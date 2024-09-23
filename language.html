@@ -118,6 +118,12 @@
       <div class="age-output" id="ageDisplay">Age: 25</div>
     </div>
 
+    <!-- Treatment Options -->
+    <div class="lang-container">
+      <button class="button" onclick="selectTreatment('Ayurvedic')">Ayurvedic</button>
+      <button class="button" onclick="selectTreatment('allopathy')">Allopathy</button>
+    </div>
+
     <!-- Submit Button -->
     <div class="submit-container">
       <button class="button" onclick="submitSelection()">Submit</button>
@@ -126,7 +132,8 @@
 
   <script>
     let selectedLanguage = '';
-    
+    let selectedTreatment = '';
+
     // Function to handle language selection
     function selectLanguage(language) {
       selectedLanguage = language;
@@ -148,27 +155,43 @@
       document.getElementById('ageDisplay').textContent = 'Age: ' + value;
     }
 
+    // Function to handle treatment selection
+    function selectTreatment(treatment) {
+      selectedTreatment = treatment;
+
+      if (selectedTreatment === 'homeopathy') {
+        alert('Homeopathy selected');
+      } else if (selectedTreatment === 'allopathy') {
+        alert('Allopathy selected');
+      }
+    }
+
     // Function to handle form submission and redirection
     function submitSelection() {
       const age = document.getElementById('ageRange').value;
-      
+
       if (!selectedLanguage) {
         alert('Please select a language.');
         return;
       }
 
-      // Redirect based on age and selected language
-      if (age < 18) {
-        if (selectedLanguage === 'english') {
-          window.location.href = 'under18.html';
-        } else if (selectedLanguage === 'hindi') {
-          window.location.href = 'hindiunder18.html';
+      if (!selectedTreatment) {
+        alert('Please select a treatment.');
+        return;
+      }
+
+      // Redirect based on age, selected language, and selected treatment
+      if (selectedTreatment === 'Ayurvedic') {
+        if (age < 18) {
+          window.location.href = selectedLanguage === 'english' ? 'Ayurvedic.html' : 'hindi_Ayurvedic.html';
+        } else {
+          window.location.href = selectedLanguage === 'english' ? 'Ayurvedic.html' : 'hindi_Ayurvedic.html';
         }
-      } else {
-        if (selectedLanguage === 'english') {
-          window.location.href = 'options.html';
-        } else if (selectedLanguage === 'hindi') {
-          window.location.href = 'hindioptions.html';
+      } else if (selectedTreatment === 'allopathy') {
+        if (age < 18) {
+          window.location.href = selectedLanguage === 'english' ? 'under18.html' : 'hindiunder18.html';
+        } else {
+          window.location.href = selectedLanguage === 'english' ? 'options.html' : 'hindioptions.html';
         }
       }
     }

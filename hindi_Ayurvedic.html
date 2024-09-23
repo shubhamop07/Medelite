@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>आयुर्वेदिक उपचार</title>
+  <style>
+    body {
+      font-family: "Roboto Condensed", sans-serif;
+      background-color: #f0f0f0;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 800px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    h1 {
+      color: #4fc7ff;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      margin-top: 30px;
+      color: #7c7cda;
+    }
+
+    p {
+      font-size: 1.2em;
+      line-height: 1.5;
+      margin-bottom: 15px;
+    }
+
+    .nav-buttons {
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 5px;
+      font-size: 1em;
+      background-color: #4fc7ff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #7c7cda;
+    }
+
+    section {
+      display: none;
+      margin-top: 20px;
+    }
+
+    section.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>आयुर्वेदिक उपचार</h1>
+    
+    <div class="nav-buttons">
+      <button onclick="showSection('fever')">बुखार</button>
+      <button onclick="showSection('headache')">सिरदर्द</button>
+      <button onclick="showSection('cold-cough')">सर्दी और खांसी</button>
+      <button onclick="showSection('stomach-pain')">पेट दर्द</button>
+    </div>
+
+    <section id="fever" class="active">
+      <h2>बुखार के लिए आयुर्वेदिक उपचार</h2>
+      <p><strong>तुलसी:</strong> तुलसी (पवित्र तुलसी) में शक्तिशाली एंटी-इन्फ्लेमेटरी गुण होते हैं। तुलसी के पत्तों को पानी में उबालें, उसमें अदरक और शहद मिलाएं, और इस मिश्रण को दिन में 2-3 बार पिएं।</p>
+      <p><strong>गिलोय:</strong> गिलोय के तने को पानी में उबालें, छानकर इसका काढ़ा पिएं। यह प्रतिरक्षा प्रणाली को मजबूत करने में मदद करता है।</p>
+      <p><strong>शहद और अदरक:</strong> शहद और अदरक का मिश्रण शरीर के तापमान को कम कर सकता है और गले को शांत करता है।</p>
+      <p><strong>हाइड्रेटेड रहें:</strong> पर्याप्त गर्म पानी और हर्बल चाय पिएं ताकि शरीर से विषाक्त पदार्थ बाहर निकलें और आप हाइड्रेटेड रहें।</p>
+    </section>
+
+    <section id="headache">
+      <h2>सिरदर्द के लिए आयुर्वेदिक उपचार</h2>
+      <p><strong>अदरक का लेप:</strong> अदरक और पानी का पेस्ट बनाकर अपने माथे पर 10-15 मिनट तक लगाएं ताकि दर्द से राहत मिल सके।</p>
+      <p><strong>पिपरमिंट तेल:</strong> अपने सिर के दोनों किनारों पर पिपरमिंट तेल की मालिश करें ताकि तनावजनित सिरदर्द में आराम मिल सके और रक्त परिसंचरण बेहतर हो।</p>
+      <p><strong>लौंग:</strong> कुछ लौंग को कुचलकर कपड़े में रखें और उसकी सुगंध को सूंघें ताकि सिरदर्द से राहत मिल सके।</p>
+      <p><strong>हाइड्रेशन:</strong> सिरदर्द से बचने के लिए नींबू और शहद के साथ गर्म पानी पिएं।</p>
+    </section>
+
+    <section id="cold-cough">
+      <h2>सर्दी और खांसी के लिए आयुर्वेदिक उपचार</h2>
+      <p><strong>हल्दी दूध:</strong> गर्म दूध में हल्दी (हल्दी) मिलाकर पिएं ताकि सर्दी और खांसी के लक्षण कम हो सकें।</p>
+      <p><strong>तुलसी और अदरक की चाय:</strong> तुलसी, अदरक और शहद से बनी चाय गले की खराश और खांसी के लिए एक बेहतरीन उपाय है।</p>
+      <p><strong>भाप लें:</strong> नाक बंद होने पर नीलगिरी तेल या हल्दी से उबले पानी की भाप लें।</p>
+      <p><strong>मुलेठी:</strong> मुलेठी की जड़ चबाएं या मुलेठी की चाय पिएं ताकि गले को आराम मिल सके और खांसी में राहत मिले।</p>
+    </section>
+
+    <section id="stomach-pain">
+      <h2>पेट दर्द के लिए आयुर्वेदिक उपचार</h2>
+      <p><strong>सौंफ:</strong> सौंफ चबाएं या सौंफ की चाय पिएं ताकि गैस और पेट फूलने से राहत मिल सके।</p>
+      <p><strong>अजवाइन:</strong> अजवाइन के बीजों को काले नमक के साथ मिलाकर खाएं ताकि पेट के मरोड़ और अपच का इलाज हो सके।</p>
+      <p><strong>अदरक की चाय:</strong> अदरक की चाय में शहद मिलाकर पिएं ताकि सूजन कम हो सके और पेट दर्द में राहत मिल सके।</p>
+      <p><strong>छाछ:</strong> छाछ में हींग (असाफेटिडा) मिलाकर पिएं ताकि पाचन में सहायता मिले और दर्द से राहत मिले।</p>
+    </section>
+  </div>
+
+  <script>
+    function showSection(sectionId) {
+      // सभी सेक्शन छुपाएं
+      const sections = document.querySelectorAll('section');
+      sections.forEach(section => section.classList.remove('active'));
+
+      // चयनित सेक्शन को दिखाएं
+      document.getElementById(sectionId).classList.add('active');
+    }
+  </script>
+
+</body>
+</html>

@@ -190,68 +190,60 @@
   </header>
   <main>
     <div class="options-container">
-      <!-- Fever checkbox option -->
+      <!-- Existing conditions -->
       <div class="option-checkbox">
         <input type="checkbox" id="feverCheck" value="fever">
         <img src="./fever.webp" alt="Fever">
         <label for="feverCheck">Fever</label>
       </div>
-      <!-- Cough and Cold checkbox option -->
       <div class="option-checkbox">
         <input type="checkbox" id="coldCoughCheck" value="coldAndCough">
         <img src="./cough and cold.webp" alt="Cough and Cold">
         <label for="coldCoughCheck">Cough Cold</label>
       </div>
-      <!-- Headache checkbox option -->
       <div class="option-checkbox">
         <input type="checkbox" id="headacheCheck" value="headache">
         <img src="./headache.jpeg" alt="Headache">
         <label for="headacheCheck">Headache</label>
       </div>
-      <!-- Stomach Pain checkbox option -->
       <div class="option-checkbox">
         <input type="checkbox" id="stomachPainCheck" value="stomachPain">
         <img src="./stomach pain.webp" alt="Stomach Pain">
         <label for="stomachPainCheck">Stomach Pain</label>
+      </div>
+      
+      <!-- New conditions -->
+      <div class="option-checkbox">
+        <input type="checkbox" id="eyeIrritationCheck" value="eyeIrritation">
+        <img src="./images (1).jpeg" alt="Eye Irritation">
+        <label for="eyeIrritationCheck">Eye Irritation</label>
+      </div>
+      <div class="option-checkbox">
+        <input type="checkbox" id="viralDiseasesCheck" value="viralDiseases">
+        <img src="./viral-infection.png" alt="Viral Diseases">
+        <label for="viralDiseasesCheck">Viral Diseases</label>
+      </div>
+      <div class="option-checkbox">
+        <input type="checkbox" id="bodyPainCheck" value="bodyPain">
+        <img src="./images (2).jpeg" alt="Body Pain">
+        <label for="bodyPainCheck">Body Pain</label>
+      </div>
+      <div class="option-checkbox">
+        <input type="checkbox" id="bpSugarCheck" value="bpSugar">
+        <img src="./bp suger.jpg" alt="BP and Sugar">
+        <label for="bpSugarCheck">BP and Sugar</label>
       </div>
     </div>
 
     <!-- OK Button -->
     <button class="button" onclick="confirmSelection()">OK</button>
 
-    <!-- Removed existing medicine-info sections -->
-
-  
-
-
-
-  
-</script>
-
-
-<!-- Voice Control Section -->
-<div id="voice-control">
-  <p>Click the button below and say the condition you want to select:</p>
-  <button class="button" onclick="startVoiceRecognition()">Start Voice Recognition</button>
-
-  <!-- New "Concern with Doctor" Button -->
-  <button class="button" onclick="concernWithDoctor()">Concern with Doctor</button>
-</div>
-
-<script>
-  // Function to handle "Concern with Doctor" button click
-  function concernWithDoctor() {
-    // Google Meet meeting link
-    var meetLink = "https://meet.google.com/rsp-znie-rrt"; // Replace with your Google Meet link
-    window.open(meetLink, '_blank');
-  }
-</script>
-
-
-
-
-
-
+    <!-- Voice Control Section -->
+    <div id="voice-control">
+      <p>Click the button below and say the condition you want to select:</p>
+      <button class="button" onclick="startVoiceRecognition()">Start Voice Recognition</button>
+      <button class="button" onclick="concernWithDoctor()">Concern with Doctor</button>
+    </div>
 
     <!-- Text Input for diseases -->
     <div>
@@ -260,36 +252,27 @@
   </main>
 
   <script>
-    // Function to confirm selection and redirect to the new page with selected conditions
     function confirmSelection() {
       var selectedConditions = [];
-      if (document.getElementById('feverCheck').checked) {
-        selectedConditions.push('fever');
-      }
-      if (document.getElementById('coldCoughCheck').checked) {
-        selectedConditions.push('coldAndCough');
-      }
-      if (document.getElementById('headacheCheck').checked) {
-        selectedConditions.push('headache');
-      }
-      if (document.getElementById('stomachPainCheck').checked) {
-        selectedConditions.push('stomachPain');
-      }
+      if (document.getElementById('feverCheck').checked) selectedConditions.push('fever');
+      if (document.getElementById('coldCoughCheck').checked) selectedConditions.push('coldAndCough');
+      if (document.getElementById('headacheCheck').checked) selectedConditions.push('headache');
+      if (document.getElementById('stomachPainCheck').checked) selectedConditions.push('stomachPain');
+      if (document.getElementById('eyeIrritationCheck').checked) selectedConditions.push('eyeIrritation');
+      if (document.getElementById('viralDiseasesCheck').checked) selectedConditions.push('viralDiseases');
+      if (document.getElementById('bodyPainCheck').checked) selectedConditions.push('bodyPain');
+      if (document.getElementById('bpSugarCheck').checked) selectedConditions.push('bpSugar');
 
       if (selectedConditions.length === 0) {
         alert('Please select at least one condition.');
         return;
       }
 
-      // Encode the selected conditions as a query parameter
       var conditionsParam = encodeURIComponent(selectedConditions.join(','));
       var url = 'medicine_info.html?conditions=' + conditionsParam;
-
-      // Redirect to the new page
       window.location.href = url;
     }
 
-    // Function to start voice recognition and select checkboxes based on speech
     function startVoiceRecognition() {
       if ('webkitSpeechRecognition' in window) {
         var recognition = new webkitSpeechRecognition();
@@ -301,13 +284,17 @@
           var speechResult = event.results[0][0].transcript.toLowerCase();
           console.log('Result received: ' + speechResult);
 
-          // List of conditions to check for
           var conditions = {
             'fever': 'feverCheck',
             'cold': 'coldCoughCheck',
             'cough': 'coldCoughCheck',
             'headache': 'headacheCheck',
-            'stomach pain': 'stomachPainCheck'
+            'stomach pain': 'stomachPainCheck',
+            'eye irritation': 'eyeIrritationCheck',
+            'viral diseases': 'viralDiseasesCheck',
+            'body pain': 'bodyPainCheck',
+            'bp': 'bpSugarCheck',
+            'sugar': 'bpSugarCheck'
           };
 
           var conditionsFound = false;
@@ -320,7 +307,6 @@
           });
 
           if (conditionsFound) {
-            // After selecting based on voice, confirm the selection
             confirmSelection();
           } else {
             alert('No recognized conditions were mentioned. Please try again.');

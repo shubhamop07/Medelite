@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Ayurvedic Remedies</title>
+  <style>
+    body {
+      font-family: "Roboto Condensed", sans-serif;
+      background-color: #f0f0f0;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 800px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    h1 {
+      color: #4fc7ff;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      margin-top: 30px;
+      color: #7c7cda;
+    }
+
+    p {
+      font-size: 1.2em;
+      line-height: 1.5;
+      margin-bottom: 15px;
+    }
+
+    .nav-buttons {
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 5px;
+      font-size: 1em;
+      background-color: #4fc7ff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #7c7cda;
+    }
+
+    section {
+      display: none;
+      margin-top: 20px;
+    }
+
+    section.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Ayurvedic Remedies</h1>
+    
+    <div class="nav-buttons">
+      <button onclick="showSection('fever')">Fever</button>
+      <button onclick="showSection('headache')">Headache</button>
+      <button onclick="showSection('cold-cough')">Cold & Cough</button>
+      <button onclick="showSection('stomach-pain')">Stomach Pain</button>
+    </div>
+
+    <section id="fever" class="active">
+      <h2>Ayurvedic Remedies for Fever</h2>
+      <p><strong>Tulsi:</strong> Tulsi (Holy Basil) has powerful anti-inflammatory properties. Boil tulsi leaves in water, add ginger and honey, and drink the mixture 2-3 times a day.</p>
+      <p><strong>Giloy:</strong> Boil giloy stem in water, strain it, and drink the decoction. It helps boost immunity.</p>
+      <p><strong>Honey and Ginger:</strong> A mixture of honey and ginger can reduce body temperature and soothe the throat.</p>
+      <p><strong>Stay Hydrated:</strong> Drink plenty of warm water and herbal teas to flush out toxins and stay hydrated.</p>
+    </section>
+
+    <section id="headache">
+      <h2>Ayurvedic Remedies for Headache</h2>
+      <p><strong>Ginger Paste:</strong> Apply a paste of ginger and water on your forehead for 10-15 minutes to relieve pain.</p>
+      <p><strong>Peppermint Oil:</strong> Massage your temples with peppermint oil to reduce tension headaches and improve blood circulation.</p>
+      <p><strong>Clove:</strong> Crush a few cloves, place them in a cloth, and inhale the aroma for headache relief.</p>
+      <p><strong>Hydration:</strong> Drink warm water with lemon and honey to prevent dehydration-induced headaches.</p>
+    </section>
+
+    <section id="cold-cough">
+      <h2>Ayurvedic Remedies for Cold and Cough</h2>
+      <p><strong>Turmeric Milk:</strong> Drink warm milk with turmeric (haldi) to alleviate cold and cough symptoms.</p>
+      <p><strong>Tulsi and Ginger Tea:</strong> A tea made with tulsi, ginger, and honey is an excellent remedy for a sore throat and cough.</p>
+      <p><strong>Steam Inhalation:</strong> Inhale steam from water boiled with eucalyptus oil or turmeric to clear nasal congestion.</p>
+      <p><strong>Licorice Root:</strong> Chew licorice root or drink licorice tea to soothe the throat and relieve coughing.</p>
+    </section>
+
+    <section id="stomach-pain">
+      <h2>Ayurvedic Remedies for Stomach Pain</h2>
+      <p><strong>Fennel Seeds (Saunf):</strong> Chew fennel seeds or drink fennel tea to relieve gas and bloating.</p>
+      <p><strong>Ajwain:</strong> Mix ajwain seeds with black salt to treat stomach cramps and indigestion.</p>
+      <p><strong>Ginger Tea:</strong> Drink ginger tea with honey to reduce inflammation and soothe stomach pain.</p>
+      <p><strong>Buttermilk:</strong> Drink buttermilk with a pinch of asafoetida (hing) to aid digestion and relieve pain.</p>
+    </section>
+
+    <!-- Voice Control Section -->
+<div id="voice-control">
+  <p>Click the button below and say the condition you want to select:</p>
+  <button class="button" onclick="startVoiceRecognition()">Start Voice Recognition</button>
+
+  <!-- New "Concern with Doctor" Button -->
+  <button class="button" onclick="concernWithDoctor()">Concern with Doctor</button>
+</div>
+
+<script>
+  // Function to handle "Concern with Doctor" button click
+  function concernWithDoctor() {
+    // Google Meet meeting link
+    var meetLink = "https://meet.google.com/rsp-znie-rrt"; // Replace with your Google Meet link
+    window.open(meetLink, '_blank');
+  }
+</script>
+
+  </div>
+
+  <script>
+    function showSection(sectionId) {
+      // Hide all sections
+      const sections = document.querySelectorAll('section');
+      sections.forEach(section => section.classList.remove('active'));
+
+      // Show the selected section
+      document.getElementById(sectionId).classList.add('active');
+    }
+  </script>
+
+</body>
+</html>
