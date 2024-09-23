@@ -7,8 +7,8 @@
   <title>आयुर्वेदिक उपचार</title>
   <style>
     body {
-      font-family: "Roboto Condensed", sans-serif;
-      background-color: #f0f0f0;
+      font-family: "Arial", sans-serif;
+      background-color: #eef1f5;
       color: #333;
       margin: 0;
       padding: 0;
@@ -22,55 +22,75 @@
       width: 90%;
       max-width: 800px;
       background-color: #fff;
-      padding: 20px;
-      border-radius: 15px;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
       text-align: center;
     }
 
     h1 {
-      color: #4fc7ff;
+      color: #3f51b5;
       margin-bottom: 20px;
+      font-size: 2.5em;
     }
 
     h2 {
-      margin-top: 30px;
-      color: #7c7cda;
+      margin-top: 20px;
+      color: #5c6bc0;
+      font-size: 1.8em;
     }
 
     p {
-      font-size: 1.2em;
-      line-height: 1.5;
+      font-size: 1.1em;
+      line-height: 1.6;
       margin-bottom: 15px;
     }
 
     .nav-buttons {
       margin-bottom: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
     }
 
     button {
-      padding: 10px 20px;
+      padding: 10px 15px;
       margin: 5px;
       font-size: 1em;
-      background-color: #4fc7ff;
+      background-color: #3f51b5;
       color: #fff;
       border: none;
       border-radius: 5px;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     }
 
     button:hover {
-      background-color: #7c7cda;
+      background-color: #5c6bc0;
+      transform: translateY(-2px);
     }
 
     section {
       display: none;
       margin-top: 20px;
+      text-align: left;
     }
 
     section.active {
       display: block;
+    }
+
+    #voice-control {
+      margin-top: 30px;
+    }
+
+    #voice-control button {
+      background-color: #8e24aa;
+    }
+
+    #voice-control button:hover {
+      background-color: #ab47bc;
     }
   </style>
 </head>
@@ -82,50 +102,112 @@
     <div class="nav-buttons">
       <button onclick="showSection('fever')">बुखार</button>
       <button onclick="showSection('headache')">सिरदर्द</button>
-      <button onclick="showSection('cold-cough')">सर्दी और खांसी</button>
+      <button onclick="showSection('cold-cough')">जुकाम और खांसी</button>
       <button onclick="showSection('stomach-pain')">पेट दर्द</button>
+      <button onclick="showSection('body-pain')">शरीर दर्द</button>
+      <button onclick="showSection('eye-irritation')">आंखों में जलन</button>
+      <button onclick="showSection('bp-sugar')">बीपी और शुगर नियंत्रण</button>
+      <button onclick="showSection('dog-bite')">कुत्ते के काटने</button>
+      <button onclick="showSection('snake-bite')">सांप के काटने</button>
     </div>
 
     <section id="fever" class="active">
       <h2>बुखार के लिए आयुर्वेदिक उपचार</h2>
-      <p><strong>तुलसी:</strong> तुलसी (पवित्र तुलसी) में शक्तिशाली एंटी-इन्फ्लेमेटरी गुण होते हैं। तुलसी के पत्तों को पानी में उबालें, उसमें अदरक और शहद मिलाएं, और इस मिश्रण को दिन में 2-3 बार पिएं।</p>
-      <p><strong>गिलोय:</strong> गिलोय के तने को पानी में उबालें, छानकर इसका काढ़ा पिएं। यह प्रतिरक्षा प्रणाली को मजबूत करने में मदद करता है।</p>
-      <p><strong>शहद और अदरक:</strong> शहद और अदरक का मिश्रण शरीर के तापमान को कम कर सकता है और गले को शांत करता है।</p>
-      <p><strong>हाइड्रेटेड रहें:</strong> पर्याप्त गर्म पानी और हर्बल चाय पिएं ताकि शरीर से विषाक्त पदार्थ बाहर निकलें और आप हाइड्रेटेड रहें।</p>
+      <p><strong>तुलसी:</strong> तुलसी (हॉली बैसिल) में शक्तिशाली सूजन-रोधी गुण होते हैं। तुलसी के पत्तों को पानी में उबालें, अदरक और शहद मिलाएं, और दिन में 2-3 बार मिश्रण पिएं।</p>
+      <p><strong>गिलोय:</strong> गिलोय की डंडी को पानी में उबालें, छानें और काढ़ा पिएं। यह प्रतिरक्षा को बढ़ाता है।</p>
+      <p><strong>शहद और अदरक:</strong> शहद और अदरक का मिश्रण शरीर का तापमान कम कर सकता है और गले को शांत करता है।</p>
+      <p><strong>हाइड्रेटेड रहें:</strong> विषाक्त पदार्थों को बाहर निकालने और हाइड्रेटेड रहने के लिए गर्म पानी और हर्बल चाय पिएं।</p>
     </section>
 
     <section id="headache">
       <h2>सिरदर्द के लिए आयुर्वेदिक उपचार</h2>
-      <p><strong>अदरक का लेप:</strong> अदरक और पानी का पेस्ट बनाकर अपने माथे पर 10-15 मिनट तक लगाएं ताकि दर्द से राहत मिल सके।</p>
-      <p><strong>पिपरमिंट तेल:</strong> अपने सिर के दोनों किनारों पर पिपरमिंट तेल की मालिश करें ताकि तनावजनित सिरदर्द में आराम मिल सके और रक्त परिसंचरण बेहतर हो।</p>
-      <p><strong>लौंग:</strong> कुछ लौंग को कुचलकर कपड़े में रखें और उसकी सुगंध को सूंघें ताकि सिरदर्द से राहत मिल सके।</p>
-      <p><strong>हाइड्रेशन:</strong> सिरदर्द से बचने के लिए नींबू और शहद के साथ गर्म पानी पिएं।</p>
+      <p><strong>अदरक का पेस्ट:</strong> सिर पर अदरक और पानी का पेस्ट 10-15 मिनट के लिए लगाएं ताकि दर्द में राहत मिले।</p>
+      <p><strong>पुदीना तेल:</strong> अपने मंदिरों पर पुदीना तेल लगाकर मसाज करें ताकि तनाव सिरदर्द कम हो और रक्त संचार में सुधार हो।</p>
+      <p><strong>लौंग:</strong> कुछ लौंग को कुचलकर, कपड़े में रखें और उनकी सुगंध को सूंघें ताकि सिरदर्द में राहत मिले।</p>
+      <p><strong>हाइड्रेशन:</strong> निर्जलीकरण के कारण सिरदर्द से बचने के लिए गर्म पानी, नींबू और शहद का सेवन करें।</p>
     </section>
 
     <section id="cold-cough">
-      <h2>सर्दी और खांसी के लिए आयुर्वेदिक उपचार</h2>
-      <p><strong>हल्दी दूध:</strong> गर्म दूध में हल्दी (हल्दी) मिलाकर पिएं ताकि सर्दी और खांसी के लक्षण कम हो सकें।</p>
-      <p><strong>तुलसी और अदरक की चाय:</strong> तुलसी, अदरक और शहद से बनी चाय गले की खराश और खांसी के लिए एक बेहतरीन उपाय है।</p>
-      <p><strong>भाप लें:</strong> नाक बंद होने पर नीलगिरी तेल या हल्दी से उबले पानी की भाप लें।</p>
-      <p><strong>मुलेठी:</strong> मुलेठी की जड़ चबाएं या मुलेठी की चाय पिएं ताकि गले को आराम मिल सके और खांसी में राहत मिले।</p>
+      <h2>जुकाम और खांसी के लिए आयुर्वेदिक उपचार</h2>
+      <p><strong>हल्दी दूध:</strong> जुकाम और खांसी के लक्षणों को कम करने के लिए गर्म दूध में हल्दी मिलाकर पिएं।</p>
+      <p><strong>तुलसी और अदरक की चाय:</strong> तुलसी, अदरक और शहद की चाय गले में खराश और खांसी के लिए एक उत्कृष्ट उपचार है।</p>
+      <p><strong>भाप लेना:</strong> नाक की भीड़ को साफ करने के लिए यूकेलिप्टस तेल या हल्दी के साथ उबले पानी से भाप लें।</p>
+      <p><strong>मुलैठी:</strong> मुलैठी की जड़ चबाएं या मुलैठी की चाय पिएं ताकि गले को सुकून मिले और खांसी कम हो।</p>
     </section>
 
     <section id="stomach-pain">
       <h2>पेट दर्द के लिए आयुर्वेदिक उपचार</h2>
-      <p><strong>सौंफ:</strong> सौंफ चबाएं या सौंफ की चाय पिएं ताकि गैस और पेट फूलने से राहत मिल सके।</p>
-      <p><strong>अजवाइन:</strong> अजवाइन के बीजों को काले नमक के साथ मिलाकर खाएं ताकि पेट के मरोड़ और अपच का इलाज हो सके।</p>
-      <p><strong>अदरक की चाय:</strong> अदरक की चाय में शहद मिलाकर पिएं ताकि सूजन कम हो सके और पेट दर्द में राहत मिल सके।</p>
-      <p><strong>छाछ:</strong> छाछ में हींग (असाफेटिडा) मिलाकर पिएं ताकि पाचन में सहायता मिले और दर्द से राहत मिले।</p>
+      <p><strong>सौंफ:</strong> सौंफ चबाएं या सौंफ की चाय पिएं ताकि गैस और सूजन से राहत मिले।</p>
+      <p><strong>अजवाइन:</strong> अजवाइन के बीज को काला नमक के साथ मिलाकर पेट की ऐंठन और अपचन का इलाज करें।</p>
+      <p><strong>अदरक की चाय:</strong> अदरक की चाय शहद के साथ पिएं ताकि सूजन कम हो और पेट दर्द में राहत मिले।</p>
+      <p><strong>छाछ:</strong> एक चुटकी हींग के साथ छाछ पिएं ताकि पाचन में मदद मिले और दर्द से राहत मिले।</p>
     </section>
+
+    <section id="body-pain">
+      <h2>शरीर दर्द के लिए आयुर्वेदिक उपचार</h2>
+      <p><strong>हल्दी का पेस्ट:</strong> प्रभावित क्षेत्र पर हल्दी और नारियल तेल का पेस्ट लगाएं ताकि राहत मिले।</p>
+      <p><strong>सरसों के तेल की मालिश:</strong> गर्म सरसों के तेल की मालिश करें ताकि रक्त संचार में सुधार हो।</p>
+      <p><strong>अदरक की चाय:</strong> अदरक की चाय पीने से सूजन और दर्द कम करने में मदद मिलेगी।</p>
+      <p><strong>यूकेलिप्टस तेल:</strong> मांसपेशियों और जोड़ों के दर्द को कम करने के लिए यूकेलिप्टस तेल की सुगंध लें।</p>
+    </section>
+
+    <section id="eye-irritation">
+      <h2>आंखों में जलन के लिए आयुर्वेदिक उपचार</h2>
+      <p><strong>ठंडी पट्टी:</strong> आंखों पर ठंडी पट्टी लगाएं ताकि सूजन और जलन कम हो।</p>
+      <p><strong>गुलाब जल:</strong> जलन को शांत करने के लिए आंखों में गुलाब जल की बूंदें डालें।</p>
+      <p><strong>त्रिफला:</strong> त्रिफला जल का उपयोग करें ताकि जलन से राहत मिले।</p>
+      <p><strong>कैस्टर तेल:</strong> प्रत्येक आंख में एक बूँद कैस्टर तेल डालने से नमी मिलेगी और जलन कम होगी।</p>
+    </section>
+
+    <section id="bp-sugar">
+      <h2>बीपी और शुगर नियंत्रण के लिए आयुर्वेदिक उपचार</h2>
+      <p><strong>मेथी के बीज:</strong> मेथी के बीजों को रात भर भिगोकर सुबह सेवन करें ताकि रक्त शर्करा के स्तर को नियंत्रित किया जा सके।</p>
+      <p><strong>करी पत्ते:</strong> रोजाना कुछ करी पत्ते चबाएं ताकि रक्तचाप और शुगर प्रबंधन में मदद मिले।</p>
+      <p><strong>आंवला:</strong> आंवला का रस रक्तचाप और रक्त शर्करा के नियंत्रण के लिए लाभदायक है।</p>
+      <p><strong>अदरक की चाय:</strong> अदरक की चाय पीने से रक्तचाप को नियंत्रित करने में मदद मिलेगी।</p>
+    </section>
+
+    <section id="dog-bite">
+      <h2>कुत्ते के काटने के लिए आयुर्वेदिक उपचार</h2>
+      <p><strong>साफ करना:</strong> घाव को साफ पानी से अच्छे से धो लें।</p>
+      <p><strong>एलो वेरा जेल:</strong> ताजा एलो वेरा जेल लगाएं ताकि त्वचा को सुकून मिले और संक्रमण रोका जा सके।</p>
+      <p><strong>हल्दी का पेस्ट:</strong> काटने पर हल्दी का पेस्ट लगाएं ताकि उपचार में मदद मिले और संक्रमण रोका जा सके।</p>
+      <p><strong>डॉक्टर से परामर्श करें:</strong> किसी भी काटने पर हमेशा स्वास्थ्य सेवा प्रदाता से सलाह लें ताकि रेबीज वैक्सीन की आवश्यकता का आकलन किया जा सके।</p>
+    </section>
+
+    <section id="snake-bite">
+      <h2>सांप के काटने के लिए आयुर्वेदिक उपचार</h2>
+      <p><strong>तुरंत चिकित्सा सहायता:</strong> तुरंत आपातकालीन चिकित्सा सहायता प्राप्त करें।</p>
+      <p><strong>पल्सटिला:</strong> इस होम्योपैथिक उपचार को तब तक लिया जा सकता है जब तक चिकित्सा सहायता उपलब्ध न हो।</p>
+      <p><strong>बर्फ का उपयोग:</strong> सूजन को कम करने के लिए काटे गए क्षेत्र पर बर्फ पैक लगाएं।</p>
+      <p><strong>हर्बल काढ़े:</strong> नीम के पत्तों से बने हर्बल काढ़े मदद कर सकते हैं, लेकिन चिकित्सा उपचार में देरी न करें।</p>
+    </section>
+
+    <!-- वॉयस कंट्रोल सेक्शन -->
+    <div id="voice-control">
+      <p>नीचे दिए गए बटन पर क्लिक करें और वह स्थिति कहें जिसे आप चुनना चाहते हैं:</p>
+      <button class="button" onclick="startVoiceRecognition()">वॉयस पहचान शुरू करें</button>
+      <button class="button" onclick="concernWithDoctor()">डॉक्टर से परामर्श करें</button>
+    </div>
+
+    <script>
+      // "डॉक्टर से परामर्श करें" बटन क्लिक हैंडल करने के लिए फंक्शन
+      function concernWithDoctor() {
+        // गूगल मीट मीटिंग लिंक
+        var meetLink = "https://meet.google.com/rsp-znie-rrt"; // अपने Google Meet लिंक से बदलें
+        window.open(meetLink, '_blank');
+      }
+    </script>
+
   </div>
 
   <script>
     function showSection(sectionId) {
-      // सभी सेक्शन छुपाएं
+      // सभी सेक्शन छिपाएं
       const sections = document.querySelectorAll('section');
       sections.forEach(section => section.classList.remove('active'));
 
-      // चयनित सेक्शन को दिखाएं
+      // चयनित सेक्शन दिखाएं
       document.getElementById(sectionId).classList.add('active');
     }
   </script>

@@ -7,8 +7,8 @@
   <title>Ayurvedic Remedies</title>
   <style>
     body {
-      font-family: "Roboto Condensed", sans-serif;
-      background-color: #f0f0f0;
+      font-family: "Arial", sans-serif;
+      background-color: #eef1f5;
       color: #333;
       margin: 0;
       padding: 0;
@@ -22,55 +22,75 @@
       width: 90%;
       max-width: 800px;
       background-color: #fff;
-      padding: 20px;
-      border-radius: 15px;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
       text-align: center;
     }
 
     h1 {
-      color: #4fc7ff;
+      color: #3f51b5;
       margin-bottom: 20px;
+      font-size: 2.5em;
     }
 
     h2 {
-      margin-top: 30px;
-      color: #7c7cda;
+      margin-top: 20px;
+      color: #5c6bc0;
+      font-size: 1.8em;
     }
 
     p {
-      font-size: 1.2em;
-      line-height: 1.5;
+      font-size: 1.1em;
+      line-height: 1.6;
       margin-bottom: 15px;
     }
 
     .nav-buttons {
       margin-bottom: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
     }
 
     button {
-      padding: 10px 20px;
+      padding: 10px 15px;
       margin: 5px;
       font-size: 1em;
-      background-color: #4fc7ff;
+      background-color: #3f51b5;
       color: #fff;
       border: none;
       border-radius: 5px;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     }
 
     button:hover {
-      background-color: #7c7cda;
+      background-color: #5c6bc0;
+      transform: translateY(-2px);
     }
 
     section {
       display: none;
       margin-top: 20px;
+      text-align: left;
     }
 
     section.active {
       display: block;
+    }
+
+    #voice-control {
+      margin-top: 30px;
+    }
+
+    #voice-control button {
+      background-color: #8e24aa;
+    }
+
+    #voice-control button:hover {
+      background-color: #ab47bc;
     }
   </style>
 </head>
@@ -84,6 +104,11 @@
       <button onclick="showSection('headache')">Headache</button>
       <button onclick="showSection('cold-cough')">Cold & Cough</button>
       <button onclick="showSection('stomach-pain')">Stomach Pain</button>
+      <button onclick="showSection('body-pain')">Body Pain</button>
+      <button onclick="showSection('eye-irritation')">Eye Irritation</button>
+      <button onclick="showSection('bp-sugar')">BP & Sugar Control</button>
+      <button onclick="showSection('dog-bite')">Dog Bite</button>
+      <button onclick="showSection('snake-bite')">Snake Bite</button>
     </div>
 
     <section id="fever" class="active">
@@ -118,23 +143,63 @@
       <p><strong>Buttermilk:</strong> Drink buttermilk with a pinch of asafoetida (hing) to aid digestion and relieve pain.</p>
     </section>
 
+    <section id="body-pain">
+      <h2>Ayurvedic Remedies for Body Pain</h2>
+      <p><strong>Turmeric Paste:</strong> Apply a paste of turmeric and coconut oil to the affected area for relief.</p>
+      <p><strong>Mustard Oil Massage:</strong> Warm mustard oil and massage it onto the painful areas to improve circulation.</p>
+      <p><strong>Ginger Tea:</strong> Drink ginger tea to help reduce inflammation and pain.</p>
+      <p><strong>Eucalyptus Oil:</strong> Inhale eucalyptus oil to ease muscle and joint pain.</p>
+    </section>
+
+    <section id="eye-irritation">
+      <h2>Ayurvedic Remedies for Eye Irritation</h2>
+      <p><strong>Cold Compress:</strong> Apply a cold compress to the eyes to reduce swelling and irritation.</p>
+      <p><strong>Rose Water:</strong> Use rose water drops to soothe irritated eyes.</p>
+      <p><strong>Triphala:</strong> Use Triphala water as an eye wash for relief from irritation.</p>
+      <p><strong>Castor Oil:</strong> A drop of castor oil in each eye can help moisturize and reduce irritation.</p>
+    </section>
+
+    <section id="bp-sugar">
+      <h2>Ayurvedic Remedies for BP & Sugar Control</h2>
+      <p><strong>Fenugreek Seeds:</strong> Soak fenugreek seeds overnight and consume them in the morning to help control blood sugar levels.</p>
+      <p><strong>Curry Leaves:</strong> Chew a few curry leaves daily to help manage blood pressure and sugar.</p>
+      <p><strong>Amla:</strong> Amla juice is beneficial for both blood pressure and blood sugar control.</p>
+      <p><strong>Ginger Tea:</strong> Drinking ginger tea can also aid in regulating blood pressure.</p>
+    </section>
+
+    <section id="dog-bite">
+      <h2>Ayurvedic Remedies for Dog Bite</h2>
+      <p><strong>Cleansing:</strong> Clean the wound thoroughly with clean water.</p>
+      <p><strong>Aloe Vera Gel:</strong> Apply fresh aloe vera gel to soothe the skin and prevent infection.</p>
+      <p><strong>Turmeric Paste:</strong> Apply turmeric paste on the bite to promote healing and prevent infection.</p>
+      <p><strong>Consult a Doctor:</strong> Always consult a healthcare provider for any bite to assess the need for a rabies vaccine.</p>
+    </section>
+
+    <section id="snake-bite">
+      <h2>Ayurvedic Remedies for Snake Bite</h2>
+      <p><strong>Immediate Medical Attention:</strong> Seek emergency medical help immediately.</p>
+      <p><strong>Pulsatilla:</strong> This homeopathic remedy can be taken until medical help is available.</p>
+      <p><strong>Application of Ice:</strong> Apply ice packs to the bitten area to reduce swelling.</p>
+      <p><strong>Herbal Decoctions:</strong> Herbal decoctions like those made with neem leaves may help, but do not delay medical treatment.</p>
+    </section>
+
     <!-- Voice Control Section -->
-<div id="voice-control">
-  <p>Click the button below and say the condition you want to select:</p>
-  <button class="button" onclick="startVoiceRecognition()">Start Voice Recognition</button>
+    <div id="voice-control">
+      <p>Click the button below and say the condition you want to select:</p>
+      <button class="button" onclick="startVoiceRecognition()">Start Voice Recognition</button>
 
-  <!-- New "Concern with Doctor" Button -->
-  <button class="button" onclick="concernWithDoctor()">Concern with Doctor</button>
-</div>
+      <!-- New "Concern with Doctor" Button -->
+      <button class="button" onclick="concernWithDoctor()">Concern with Doctor</button>
+    </div>
 
-<script>
-  // Function to handle "Concern with Doctor" button click
-  function concernWithDoctor() {
-    // Google Meet meeting link
-    var meetLink = "https://meet.google.com/rsp-znie-rrt"; // Replace with your Google Meet link
-    window.open(meetLink, '_blank');
-  }
-</script>
+    <script>
+      // Function to handle "Concern with Doctor" button click
+      function concernWithDoctor() {
+        // Google Meet meeting link
+        var meetLink = "https://meet.google.com/rsp-znie-rrt"; // Replace with your Google Meet link
+        window.open(meetLink, '_blank');
+      }
+    </script>
 
   </div>
 
@@ -150,4 +215,4 @@
   </script>
 
 </body>
-</html>
+</html> 
