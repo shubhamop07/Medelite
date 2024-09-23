@@ -58,13 +58,14 @@
       border-radius: 30px;
       background: linear-gradient(135deg,#4fc7ff, #7c7cda);
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-      transition: transform 0.3s, background 0.3s;
+      transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
       cursor: pointer;
     }
 
     .button:hover {
-      background: linear-gradient(135deg,#4fc7ff, #7c7cda);
+      background: linear-gradient(135deg,#3da7e5, #6b6bba);
       transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
     }
 
     .age-container, .lang-container {
@@ -80,7 +81,28 @@
 
     .range {
       width: 80%;
-      margin: 0 auto;
+      margin: 20px auto;
+      appearance: none;
+      height: 10px;
+      border-radius: 5px;
+      background: #fff;
+      outline: none;
+      transition: background 0.3s;
+    }
+
+    .range::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #4fc7ff;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .range:hover {
+      background: rgba(255, 255, 255, 0.3);
     }
 
     .age-output {
@@ -120,8 +142,8 @@
 
     <!-- Treatment Options -->
     <div class="lang-container">
-      <button class="button" onclick="selectTreatment('Ayurvedic')">Ayurvedic</button>
-      <button class="button" onclick="selectTreatment('allopathy')">Allopathy</button>
+      <button id="ayurvedicButton" class="button" onclick="selectTreatment('Ayurvedic')">Ayurvedic</button>
+      <button id="allopathyButton" class="button" onclick="selectTreatment('Allopathy')">Allopathy</button>
     </div>
 
     <!-- Submit Button -->
@@ -141,7 +163,7 @@
       // Reset button styles
       document.getElementById('englishButton').classList.remove('active');
       document.getElementById('hindiButton').classList.remove('active');
-      
+
       // Highlight the selected language
       if (language === 'english') {
         document.getElementById('englishButton').classList.add('active');
@@ -159,10 +181,15 @@
     function selectTreatment(treatment) {
       selectedTreatment = treatment;
 
-      if (selectedTreatment === 'homeopathy') {
-        alert('Homeopathy selected');
-      } else if (selectedTreatment === 'allopathy') {
-        alert('Allopathy selected');
+      // Reset button styles
+      document.getElementById('ayurvedicButton').classList.remove('active');
+      document.getElementById('allopathyButton').classList.remove('active');
+
+      // Highlight the selected treatment
+      if (treatment === 'Ayurvedic') {
+        document.getElementById('ayurvedicButton').classList.add('active');
+      } else if (treatment === 'Allopathy') {
+        document.getElementById('allopathyButton').classList.add('active');
       }
     }
 
@@ -182,12 +209,8 @@
 
       // Redirect based on age, selected language, and selected treatment
       if (selectedTreatment === 'Ayurvedic') {
-        if (age < 18) {
-          window.location.href = selectedLanguage === 'english' ? 'Ayurvedic.html' : 'hindi_Ayurvedic.html';
-        } else {
-          window.location.href = selectedLanguage === 'english' ? 'Ayurvedic.html' : 'hindi_Ayurvedic.html';
-        }
-      } else if (selectedTreatment === 'allopathy') {
+        window.location.href = selectedLanguage === 'english' ? 'Ayurvedic.html' : 'hindi_Ayurvedic.html';
+      } else if (selectedTreatment === 'Allopathy') {
         if (age < 18) {
           window.location.href = selectedLanguage === 'english' ? 'under18.html' : 'hindiunder18.html';
         } else {
