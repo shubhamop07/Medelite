@@ -1,196 +1,151 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="shortcut icon" href="logo.png" type="image/x-icon">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-  
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>दवाइयों के विकल्प</title>
-  <link rel="stylesheet" href="medi.css">
+  <title>औषधि विकल्प</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  
   <style>
     body {
       font-family: 'Montserrat', sans-serif;
-      background-color: #f0f0f0;
+      background: url('th.jpeg') no-repeat center center fixed;
+      background-size: cover;
       color: #333;
       margin: 0;
       padding: 0;
+      backdrop-filter: blur(5px);
+    }
+
+    /* बेहतर पठनीयता के लिए ओवरले जोड़ें */
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6); /* गहरा ओवरले */
+      z-index: -1;
     }
 
     header {
-      background:linear-gradient(#4fc7ff, #7c7cda);
-      color: #fff;
-      text-align: center;
+      background-color: rgba(255, 255, 255, 0.8);
       padding: 20px;
+      text-align: center;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
 
     h1 {
       font-family: 'Merienda', cursive;
       font-size: 2.5em;
+      margin: 0;
+      color: #fff;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
     }
 
     main {
       padding: 20px;
-      max-width: 1200px;
-      margin: auto;
-      background-color: #fff;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      max-width: 900px;
+      margin: 40px auto;
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
     }
 
     .options-container {
       display: flex;
       flex-direction: column;
+      gap: 15px;
     }
 
     .option-checkbox {
       display: flex;
       align-items: center;
-      justify-content: flex-start;
-      margin-bottom: 15px;
-      background-color: #ffffff;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      padding: 10px;
-      box-sizing: border-box;
-      width: 100%;  /* चेकबॉक्स कंटेनर को पूर्ण चौड़ाई दें */
-      transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+      padding: 15px;
+      background-color: #fff;
+      border: 2px solid #ddd;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     }
 
     .option-checkbox:hover {
-      background-color: #f9f9f9;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      cursor: pointer;
+      border-color: #4fc7ff;
       transform: scale(1.02);
     }
 
-    .option-checkbox:active {
-      background-color: #f0f0f0;
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-      transform: scale(0.98);
-    }
-
     .option-checkbox img {
-      margin-right: 15px;
       width: 60px;
       height: 60px;
+      margin-right: 15px;
+      border-radius: 8px;
     }
 
     .option-checkbox input[type="checkbox"] {
       margin-right: 15px;
-      cursor: pointer;
-      appearance: none;
-      -webkit-appearance: none;
-      border: 2px solid #4fc7ff;
-      border-radius: 4px;
       width: 25px;
       height: 25px;
-      outline: none;
-      transition: background-color 0.3s ease, border-color 0.3s ease;
-      position: relative;
-    }
-
-    .option-checkbox input[type="checkbox"]::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 12px;
-      height: 6px;
-      border: solid #4fc7ff;
-      border-width: 0 0 2px 2px;
-      transform: rotate(45deg) translate(-50%, -50%);
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .option-checkbox input[type="checkbox"]:checked {
-      background-color:#4fc7ff;
-      border-color: #4fc7ff;
-    }
-
-    .option-checkbox input[type="checkbox"]:checked::before {
-      opacity: 1;
-    }
-
-    .option-checkbox label {
       cursor: pointer;
-      transition: color 0.3s ease;
-    }
-
-    .option-checkbox:hover label {
-      color: #4fc7ff;
     }
 
     .button {
       background-color: #4fc7ff;
       border: none;
       color: #fff;
-      border-radius: 8px;
-      padding: 15px 25px;
-      font-size: 1em;
+      border-radius: 12px;
+      padding: 15px;
+      font-size: 1.2em;
       font-weight: 600;
       cursor: pointer;
+      width: 100%;
+      margin: 20px 0;
       transition: background-color 0.3s ease, transform 0.3s ease;
-      margin: 10px 0;
     }
 
     .button:hover {
-      background-color: #4fc7ff;
+      background-color: #7c7cda;
       transform: scale(1.05);
     }
 
-    .button:active {
-      background-color:  #7c7cda;
-      transform: scale(0.95);
-    }
-
     .text {
-      width: calc(100% - 22px);
+      width: 100%;
       padding: 15px;
-      margin-top: 20px;
-      border: 1px solid #ddd;
       border-radius: 8px;
-      box-sizing: border-box;
+      margin: 15px 0;
+      border: 1px solid #ddd;
       font-size: 1em;
     }
 
     #voice-control {
-      margin-top: 20px;
-      padding: 15px;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      background-color: #ffffff;
+      padding: 20px;
+      background-color: #f9f9f9;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
       text-align: center;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
 
-    ul {
-      list-style: none;
-      padding: 0;
-    }
+    @media (max-width: 768px) {
+      .option-checkbox {
+        flex-direction: column;
+        align-items: flex-start;
+      }
 
-    li {
-      margin-bottom: 10px;
+      .option-checkbox img {
+        margin-bottom: 10px;
+      }
     }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
   </style>
 </head>
 <body>
+  <div class="overlay"></div>
+
   <header>
     <h1>अपनी स्थिति चुनें</h1>
   </header>
   <main>
     <div class="options-container">
-      <!-- मौजूदा स्थितियां -->
       <div class="option-checkbox">
         <input type="checkbox" id="feverCheck" value="fever">
         <img src="./fever.webp" alt="बुखार">
@@ -198,8 +153,8 @@
       </div>
       <div class="option-checkbox">
         <input type="checkbox" id="coldCoughCheck" value="coldAndCough">
-        <img src="./cough and cold.webp" alt="जुकाम और खांसी">
-        <label for="coldCoughCheck">जुकाम और खांसी</label>
+        <img src="./cough and cold.webp" alt="सर्दी और खांसी">
+        <label for="coldCoughCheck">सर्दी और खांसी</label>
       </div>
       <div class="option-checkbox">
         <input type="checkbox" id="headacheCheck" value="headache">
@@ -211,12 +166,12 @@
         <img src="./stomach pain.webp" alt="पेट दर्द">
         <label for="stomachPainCheck">पेट दर्द</label>
       </div>
-      
-      <!-- नई स्थितियां -->
+
+      <!-- नई स्थितियाँ -->
       <div class="option-checkbox">
         <input type="checkbox" id="eyeIrritationCheck" value="eyeIrritation">
-        <img src="./images (1).jpeg" alt="आँखों में जलन">
-        <label for="eyeIrritationCheck">आँखों में जलन</label>
+        <img src="./images (1).jpeg" alt="आंखों में जलन">
+        <label for="eyeIrritationCheck">आंखों में जलन</label>
       </div>
       <div class="option-checkbox">
         <input type="checkbox" id="viralDiseasesCheck" value="viralDiseases">
@@ -225,8 +180,8 @@
       </div>
       <div class="option-checkbox">
         <input type="checkbox" id="bodyPainCheck" value="bodyPain">
-        <img src="./images (2).jpeg" alt="शरीर में दर्द">
-        <label for="bodyPainCheck">शरीर में दर्द</label>
+        <img src="./images (2).jpeg" alt="शारीरिक दर्द">
+        <label for="bodyPainCheck">शारीरिक दर्द</label>
       </div>
       <div class="option-checkbox">
         <input type="checkbox" id="bpSugarCheck" value="bpSugar">
@@ -235,19 +190,19 @@
       </div>
     </div>
 
-    <!-- ओके बटन -->
-    <button class="button" onclick="confirmSelection()">ओके</button>
+    <!-- पुष्टि बटन -->
+    <button class="button" onclick="confirmSelection()">ठीक है</button>
 
     <!-- वॉइस कंट्रोल सेक्शन -->
     <div id="voice-control">
-      <p>नीचे बटन पर क्लिक करें और वह स्थिति कहें जिसे आप चुनना चाहते हैं:</p>
-      <button class="button" onclick="startVoiceRecognition()">वॉइस रिकग्निशन शुरू करें</button>
-      <button class="button" onclick="concernWithDoctor()">डॉक्टर से सलाह लें</button>
+      <p>नीचे दिए गए बटन पर क्लिक करें और अपनी स्थिति बताएं:</p>
+      <button class="button" onclick="startVoiceRecognition()">वॉइस मान्यता शुरू करें</button>
+      <button class="button" onclick="concernWithDoctor()">डॉक्टर से परामर्श करें</button>
     </div>
 
-    <!-- रोगों के लिए टेक्स्ट इनपुट -->
+    <!-- टेक्स्ट इनपुट -->
     <div>
-      <input placeholder="यहाँ रोग दर्ज करें" class="text" id="diseasesInput">
+      <input placeholder="यहाँ स्थिति दर्ज करें" class="text" id="diseasesInput">
     </div>
   </main>
 
@@ -276,57 +231,45 @@
     function startVoiceRecognition() {
       if ('webkitSpeechRecognition' in window) {
         var recognition = new webkitSpeechRecognition();
-        recognition.lang = 'hi-IN';
-        recognition.onstart = function() {
-          console.log('वॉइस रिकग्निशन शुरू हो गया। माइक्रोफोन में बोलें।');
-        };
+        recognition.lang = 'hi-IN'; // हिंदी के लिए भाषा सेट करें
+        recognition.onstart = function() { console.log('वॉइस मान्यता शुरू हो गई।'); };
         recognition.onresult = function(event) {
           var speechResult = event.results[0][0].transcript.toLowerCase();
-          console.log('परिणाम प्राप्त हुआ: ' + speechResult);
-
           var conditions = {
             'बुखार': 'feverCheck',
-            'जुकाम': 'coldCoughCheck',
-            'खांसी': 'coldCoughCheck',
+            'सर्दी और खांसी': 'coldCoughCheck',
             'सिरदर्द': 'headacheCheck',
             'पेट दर्द': 'stomachPainCheck',
-            'आँखों में जलन': 'eyeIrritationCheck',
+            'आंखों में जलन': 'eyeIrritationCheck',
             'वायरल बीमारियाँ': 'viralDiseasesCheck',
-            'शरीर में दर्द': 'bodyPainCheck',
-            'बीपी': 'bpSugarCheck',
-            'शुगर': 'bpSugarCheck'
+            'शारीरिक दर्द': 'bodyPainCheck',
+            'बीपी और शुगर': 'bpSugarCheck'
           };
 
-          var conditionsFound = false;
-
-          Object.keys(conditions).forEach(condition => {
+          var found = false;
+          for (var condition in conditions) {
             if (speechResult.includes(condition)) {
               document.getElementById(conditions[condition]).checked = true;
-              conditionsFound = true;
+              found = true;
             }
-          });
+          }
 
-          if (conditionsFound) {
+          if (found) {
             confirmSelection();
           } else {
-            alert('कोई मान्यता प्राप्त स्थिति नहीं मिली। कृपया फिर से प्रयास करें।');
+            alert('स्थिति पहचान नहीं पाई। कृपया पुनः प्रयास करें।');
           }
         };
-        recognition.onerror = function(event) {
-          console.log('रिकग्निशन में त्रुटि आई: ' + event.error);
-        };
-        recognition.onend = function() {
-          console.log('वॉइस रिकग्निशन समाप्त हुआ।');
-        };
+        recognition.onerror = function() { alert('मान्यता के दौरान एक त्रुटि हुई। कृपया पुनः प्रयास करें।'); };
         recognition.start();
       } else {
-        alert('आपका ब्राउज़र वॉइस रिकग्निशन का समर्थन नहीं करता है। कृपया Chrome या किसी संगत ब्राउज़र का उपयोग करें।');
+        alert('इस ब्राउज़र पर वॉइस मान्यता समर्थित नहीं है।');
       }
     }
+
     function concernWithDoctor() {
-    var meetLink = "https://meet.google.com/your-meeting-link"; // Replace with your actual Google Meet link
-    window.location.href = meetLink;
-  }
+      window.location.href = "https://meet.google.com/your-meeting-link"; 
+    }
   </script>
 </body>
 </html>

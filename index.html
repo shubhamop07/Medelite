@@ -5,7 +5,7 @@
   <link rel="shortcut icon" href="logo.png" type="image/x-icon">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;1,400&display=swap" rel="stylesheet">
-
+  
   <title>Med Elite - Medicine Support</title>
   <style>
     * {
@@ -16,42 +16,42 @@
     }
 
     body {
-      background-color: #f4f4f4;
-      color: #333;
+      background: url('th.jpeg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
       height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
+      align-items: center;
+      backdrop-filter: blur(5px); /* To enhance readability */
+      text-align: center;
     }
 
     header {
       text-align: center;
+      margin-bottom: 20px;
     }
 
     h1 {
       font-weight: 700;
-      font-size: 2em;
+      font-size: 2.5em;
       color: #fff;
-      background: linear-gradient(135deg, #4fc7ff, #7c7cda);
-      padding: 15px;
+      padding: 20px;
       border-radius: 12px;
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-      margin-bottom: 20px;
-      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-      transition: transform 0.4s;
-
-    }
-    h1 img{
-      display: flex;
-      flex-direction: column;
-      justify-content: left;
-    margin-left: 20px;
-
-
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+      background: rgba(0, 0, 0, 0.6);
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+      transition: transform 0.3s;
     }
 
     h1:hover {
       transform: scale(1.05);
+    }
+
+    h1 img {
+      margin-right: 15px;
+      vertical-align: middle;
     }
 
     #button_container {
@@ -59,21 +59,20 @@
       justify-content: center;
       align-items: center;
       height: auto;
+      margin-bottom: 40px;
     }
 
     .button {
       padding: 15px 35px;
-      font-size: 1.5em;
-      text-align: center;
-      border: none;
+      font-size: 1.3em;
       background: linear-gradient(135deg, #7c7cda, #4fc7ff);
       border-radius: 40px;
       color: #fff;
       font-weight: 600;
-      transition: background-color 0.3s ease, transform 0.3s ease;
       cursor: pointer;
       text-decoration: none;
       box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s ease, transform 0.3s ease;
     }
 
     .button:hover {
@@ -81,22 +80,15 @@
       transform: scale(1.1);
     }
 
-    main {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-
     .divme {
       display: flex;
       justify-content: center;
-      gap: 20px;
+      gap: 30px;
+      margin-bottom: 30px;
     }
 
     .nav-link {
-      color: #2a2a72;
+      color: #fff;
       text-decoration: none;
       font-size: 1.2em;
       font-weight: 600;
@@ -104,25 +96,27 @@
     }
 
     .nav-link:hover {
-      color: #4fc7ff;
-      transform: scale(1.05);
+      color: #ffcc00;
+      transform: scale(1.1);
     }
 
     .tab-container {
       margin-top: 20px;
+      width: 90%;
+      max-width: 800px;
     }
 
     .tab-buttons {
       display: flex;
       justify-content: center;
-      margin-bottom: 15px;
+      margin-bottom: 20px;
     }
 
     .tab-button {
-      padding: 8px 16px;
+      padding: 10px 20px;
       border: none;
-      background-color: #7c7cda;
-      color: white;
+      background-color: rgba(255, 255, 255, 0.2);
+      color: #fff;
       font-weight: 600;
       cursor: pointer;
       margin: 0 10px;
@@ -130,74 +124,63 @@
       transition: background-color 0.3s ease;
     }
 
-    .tab-button:hover {
+    .tab-button.active {
       background-color: #4fc7ff;
     }
 
-    .tab-button.active {
+    .tab-button:hover {
       background-color: #4fc7ff;
     }
 
     .tab-content {
       display: none;
       text-align: left;
-      background-color: rgba(255, 255, 255, 0.85);
-      padding: 30px;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 25px;
       border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+      color: #fff;
+      text-align: center; /* Center content */
     }
 
     .tab-content.active {
       display: block;
     }
 
-    /* Mobile styles */
+    /* Mobile Styles */
     @media (max-width: 768px) {
-      body {
-        padding: 20px;
-      }
-
       h1 {
-        font-size: 1.5em; /* Smaller heading */
-        padding: 10px;
-        margin-bottom: 15px;
+        font-size: 1.8em;
       }
 
       .button {
-        padding: 10px 25px; /* Adjust button padding */
+        padding: 10px 25px;
         font-size: 1.2em;
       }
 
-      .nav-link {
-        font-size: 1em; /* Smaller font for links */
-      }
-
       .divme {
-        flex-direction: column; /* Stack links on top of each other */
-        gap: 10px;
+        flex-direction: column;
+        gap: 15px;
       }
 
       .tab-buttons {
         flex-direction: column;
+        gap: 10px;
       }
 
       .tab-button {
-        margin: 5px 0;
-        width: 100%; /* Full width buttons for mobile */
+        width: 100%;
         text-align: center;
       }
-
-      .tab-content {
-        padding: 20px; /* Adjust tab content padding */
-      }
-    
     }
   </style>
 </head>
 <body>
   <header>
-   
-    <h1 class="c1" id="color"> <img src="logo.png" alt="" height="60px" width="60px" > How May I Help You? <br>क्या मेरे द्वारा आपकी कोई सहायता हो सकती है </h1>
+    <h1 class="c1" id="color">
+      <img src="logo.png" alt="" height="60px" width="60px">
+      How May I Help You? <br> क्या मेरे द्वारा आपकी कोई सहायता हो सकती है
+    </h1>
   </header>
 
   <main>

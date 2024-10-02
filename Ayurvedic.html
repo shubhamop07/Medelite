@@ -16,6 +16,7 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
+      overflow: hidden;
     }
 
     .container {
@@ -26,6 +27,7 @@
       border-radius: 10px;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
       text-align: center;
+      position: relative;
     }
 
     h1 {
@@ -34,41 +36,38 @@
       font-size: 2.5em;
     }
 
-    h2 {
-      margin-top: 20px;
-      color: #5c6bc0;
-      font-size: 1.8em;
-    }
-
-    p {
-      font-size: 1.1em;
-      line-height: 1.6;
-      margin-bottom: 15px;
-    }
-
     .nav-buttons {
-      margin-bottom: 20px;
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
+      justify-content: space-around;
+      margin-bottom: 30px;
     }
 
-    button {
-      padding: 10px 15px;
-      margin: 5px;
+    .nav-button {
+      display: flex;
+      align-items: center;
+      padding: 12px 20px;
+      margin: 10px;
       font-size: 1em;
       background-color: #3f51b5;
       color: #fff;
       border: none;
-      border-radius: 5px;
+      border-radius: 8px;
       cursor: pointer;
       transition: background-color 0.3s ease, transform 0.2s ease;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      text-align: left;
+      width: 45%;
     }
 
-    button:hover {
+    .nav-button:hover {
       background-color: #5c6bc0;
       transform: translateY(-2px);
+    }
+
+    .nav-button i {
+      font-size: 1.5em;
+      margin-right: 10px;
     }
 
     section {
@@ -79,18 +78,23 @@
 
     section.active {
       display: block;
+      animation: fadeIn 0.5s ease-in-out;
     }
 
-    #voice-control {
-      margin-top: 30px;
-    }
+    /* Icons for buttons */
+    .icon-fever:before { content: "🌡️"; }
+    .icon-headache:before { content: "🤕"; }
+    .icon-cold-cough:before { content: "🤧"; }
+    .icon-stomach-pain:before { content: "🤢"; }
+    .icon-body-pain:before { content: "💪"; }
+    .icon-eye-irritation:before { content: "👁️"; }
+    .icon-bp-sugar:before { content: "🩸"; }
+    .icon-dog-bite:before { content: "🐕"; }
+    .icon-snake-bite:before { content: "🐍"; }
 
-    #voice-control button {
-      background-color: #8e24aa;
-    }
-
-    #voice-control button:hover {
-      background-color: #ab47bc;
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
   </style>
 </head>
@@ -100,15 +104,15 @@
     <h1>Ayurvedic Remedies</h1>
     
     <div class="nav-buttons">
-      <button onclick="showSection('fever')">Fever</button>
-      <button onclick="showSection('headache')">Headache</button>
-      <button onclick="showSection('cold-cough')">Cold & Cough</button>
-      <button onclick="showSection('stomach-pain')">Stomach Pain</button>
-      <button onclick="showSection('body-pain')">Body Pain</button>
-      <button onclick="showSection('eye-irritation')">Eye Irritation</button>
-      <button onclick="showSection('bp-sugar')">BP & Sugar Control</button>
-      <button onclick="showSection('dog-bite')">Dog Bite</button>
-      <button onclick="showSection('snake-bite')">Snake Bite</button>
+      <button class="nav-button icon-fever" onclick="showSection('fever')">Fever</button>
+      <button class="nav-button icon-headache" onclick="showSection('headache')">Headache</button>
+      <button class="nav-button icon-cold-cough" onclick="showSection('cold-cough')">Cold & Cough</button>
+      <button class="nav-button icon-stomach-pain" onclick="showSection('stomach-pain')">Stomach Pain</button>
+      <button class="nav-button icon-body-pain" onclick="showSection('body-pain')">Body Pain</button>
+      <button class="nav-button icon-eye-irritation" onclick="showSection('eye-irritation')">Eye Irritation</button>
+      <button class="nav-button icon-bp-sugar" onclick="showSection('bp-sugar')">BP & Sugar Control</button>
+      <button class="nav-button icon-dog-bite" onclick="showSection('dog-bite')">Dog Bite</button>
+      <button class="nav-button icon-snake-bite" onclick="showSection('snake-bite')">Snake Bite</button>
     </div>
 
     <section id="fever" class="active">
@@ -119,7 +123,7 @@
       <p><strong>Stay Hydrated:</strong> Drink plenty of warm water and herbal teas to flush out toxins and stay hydrated.</p>
     </section>
 
-    <section id="headache">
+       <section id="headache">
       <h2>Ayurvedic Remedies for Headache</h2>
       <p><strong>Ginger Paste:</strong> Apply a paste of ginger and water on your forehead for 10-15 minutes to relieve pain.</p>
       <p><strong>Peppermint Oil:</strong> Massage your temples with peppermint oil to reduce tension headaches and improve blood circulation.</p>
@@ -183,10 +187,12 @@
       <p><strong>Herbal Decoctions:</strong> Herbal decoctions like those made with neem leaves may help, but do not delay medical treatment.</p>
     </section>
 
+
     <!-- Voice Control Section -->
     <div id="voice-control">
       <p>Click the button below and say the condition you want to select:</p>
       <button class="button" onclick="startVoiceRecognition()">Start Voice Recognition</button>
+      <p id="voice-result"></p>
 
       <!-- New "Concern with Doctor" Button -->
       <button class="button" onclick="concernWithDoctor()">Concern with Doctor</button>
@@ -199,20 +205,42 @@
         var meetLink = "https://meet.google.com/rsp-znie-rrt"; // Replace with your Google Meet link
         window.open(meetLink, '_blank');
       }
+
+      // Function to show remedy in modal
+      function showSection(sectionId) {
+        const sections = document.querySelectorAll('section');
+        sections.forEach(section => section.classList.remove('active'));
+        document.getElementById(sectionId).classList.add('active');
+
+        const title = document.querySelector(`#${sectionId} h2`).textContent;
+        const content = document.querySelector(`#${sectionId}`).innerHTML;
+        
+        document.getElementById('modalTitle').innerText = title;
+        document.getElementById('modalContent').innerHTML = content;
+        document.getElementById('remedyModal').style.display = 'flex';
+      }
+
+      // Function to close the modal
+      function closeModal() {
+        document.getElementById('remedyModal').style.display = 'none';
+      }
+
+      // Function to start voice recognition (simplified)
+      function startVoiceRecognition() {
+        const voiceResult = document.getElementById('voice-result');
+        voiceResult.innerText = 'Listening...';
+
+        // Simulating voice recognition for demo purposes
+        setTimeout(() => {
+          const recognizedText = "Fever"; // Replace with actual voice recognition logic
+          voiceResult.innerText = `You said: ${recognizedText}`;
+          showSection(recognizedText.toLowerCase().replace(' ', '-'));
+        }, 2000);
+      }
     </script>
 
   </div>
 
-  <script>
-    function showSection(sectionId) {
-      // Hide all sections
-      const sections = document.querySelectorAll('section');
-      sections.forEach(section => section.classList.remove('active'));
-
-      // Show the selected section
-      document.getElementById(sectionId).classList.add('active');
-    }
-  </script>
-
 </body>
-</html> 
+</html>
+

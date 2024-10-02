@@ -21,24 +21,27 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background: linear-gradient(135deg,#4fc7ff, #7c7cda);
+      background: url('th.jpeg') no-repeat center center fixed;
+      background-size: cover;
       color: #fff;
     }
 
     .container {
       text-align: center;
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(0, 0, 0, 0.5);
       padding: 50px;
       border-radius: 15px;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
       backdrop-filter: blur(10px);
       animation: fadeIn 1.2s ease-in-out;
+      max-width: 90%;
+      width: 450px;
     }
 
     h1 {
       font-size: 3em;
       margin-bottom: 40px;
-      text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
+      text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
       letter-spacing: 1px;
     }
 
@@ -53,19 +56,19 @@
       margin: 10px;
       font-size: 1.5em;
       font-weight: bold;
-      color: #fff;
+      color: #fff; /* Text color for contrast */
       text-decoration: none;
       border-radius: 30px;
-      background: linear-gradient(135deg,#4fc7ff, #7c7cda);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      background: linear-gradient(135deg, #007bff, #0056b3); /* Blue gradient for buttons */
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
       transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
       cursor: pointer;
     }
 
     .button:hover {
-      background: linear-gradient(135deg,#3da7e5, #6b6bba);
-      transform: scale(1.1);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+      background: linear-gradient(135deg, #0056b3, #004085); /* Darker blue on hover */
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
     }
 
     .age-container, .lang-container {
@@ -96,7 +99,7 @@
       width: 20px;
       height: 20px;
       border-radius: 50%;
-      background: #4fc7ff;
+      background: #007bff; /* Thumb color matches button color */
       cursor: pointer;
       transition: transform 0.3s;
     }
@@ -118,6 +121,18 @@
 
     .active {
       border: 2px solid #fff;
+    }
+
+    .submit-container {
+      margin-top: 30px;
+    }
+
+    .submit-container .button {
+      background: linear-gradient(135deg, #28a745, #218838); /* Green gradient for submit button */
+    }
+
+    .submit-container .button:hover {
+      background: linear-gradient(135deg, #218838, #1e7e34); /* Darker green on hover */
     }
   </style>
 </head>
