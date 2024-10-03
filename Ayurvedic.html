@@ -225,18 +225,61 @@
         document.getElementById('remedyModal').style.display = 'none';
       }
 
-      // Function to start voice recognition (simplified)
-      function startVoiceRecognition() {
-        const voiceResult = document.getElementById('voice-result');
-        voiceResult.innerText = 'Listening...';
+ // Function to start voice recognition using the Web Speech API
+function startVoiceRecognition() {
+  const voiceResult = document.getElementById('voice-result');
+  voiceResult.innerText = 'Listening...';
 
-        // Simulating voice recognition for demo purposes
-        setTimeout(() => {
-          const recognizedText = "Fever"; // Replace with actual voice recognition logic
-          voiceResult.innerText = `You said: ${recognizedText}`;
-          showSection(recognizedText.toLowerCase().replace(' ', '-'));
-        }, 2000);
+  // Check if the browser supports the Web Speech API
+  if ('webkitSpeechRecognition' in window) {
+    const recognition = new webkitSpeechRecognition();
+    
+    // Set properties of the recognition
+    recognition.lang = 'en-US';  // Set language to English
+    recognition.continuous = false;  // Stop automatically after speech
+    recognition.interimResults = false;  // Return final results only
+
+    // Start recognition
+    recognition.start();
+
+    // When a result is recognized
+    recognition.onresult = function(event) {
+      const recognizedText = event.results[0][0].transcript.toLowerCase();
+      voiceResult.innerText = `You said: ${recognizedText}`;
+
+      // Map the recognized text to section IDs
+      const sectionsMap = {
+        "fever": "fever",
+        "headache": "headache",
+        "cold and cough": "cold-cough",
+        "stomach pain": "stomach-pain",
+        "body pain": "body-pain",
+        "eye irritation": "eye-irritation",
+        "blood pressure": "bp-sugar",
+        "bp": "bp-sugar",
+        "sugar control": "bp-sugar",
+        "dog bite": "dog-bite",
+        "snake bite": "snake-bite"
+      };
+
+      // Check if recognizedText matches a valid section
+      if (sectionsMap[recognizedText]) {
+        showSection(sectionsMap[recognizedText]);
+      } else {
+        voiceResult.innerText = `Sorry, I didn't recognize that condition. Please try again.`;
       }
+    };
+
+    // Handle recognition errors
+    recognition.onerror = function(event) {
+      voiceResult.innerText = `Error occurred in recognition: ${event.error}`;
+    };
+
+  } else {
+    voiceResult.innerText = 'Sorry, your browser does not support speech recognition.';
+  }
+}
+
     </script>
 
   </div>

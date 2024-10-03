@@ -16,6 +16,7 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
+      overflow: hidden;
     }
 
     .container {
@@ -26,6 +27,7 @@
       border-radius: 10px;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
       text-align: center;
+      position: relative;
     }
 
     h1 {
@@ -34,41 +36,38 @@
       font-size: 2.5em;
     }
 
-    h2 {
-      margin-top: 20px;
-      color: #5c6bc0;
-      font-size: 1.8em;
-    }
-
-    p {
-      font-size: 1.1em;
-      line-height: 1.6;
-      margin-bottom: 15px;
-    }
-
     .nav-buttons {
-      margin-bottom: 20px;
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
+      justify-content: space-around;
+      margin-bottom: 30px;
     }
 
-    button {
-      padding: 10px 15px;
-      margin: 5px;
+    .nav-button {
+      display: flex;
+      align-items: center;
+      padding: 12px 20px;
+      margin: 10px;
       font-size: 1em;
       background-color: #3f51b5;
       color: #fff;
       border: none;
-      border-radius: 5px;
+      border-radius: 8px;
       cursor: pointer;
       transition: background-color 0.3s ease, transform 0.2s ease;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      text-align: left;
+      width: 45%;
     }
 
-    button:hover {
+    .nav-button:hover {
       background-color: #5c6bc0;
       transform: translateY(-2px);
+    }
+
+    .nav-button i {
+      font-size: 1.5em;
+      margin-right: 10px;
     }
 
     section {
@@ -79,18 +78,23 @@
 
     section.active {
       display: block;
+      animation: fadeIn 0.5s ease-in-out;
     }
 
-    #voice-control {
-      margin-top: 30px;
-    }
+    /* Icons for buttons */
+    .icon-fever:before { content: "🌡️"; }
+    .icon-headache:before { content: "🤕"; }
+    .icon-cold-cough:before { content: "🤧"; }
+    .icon-stomach-pain:before { content: "🤢"; }
+    .icon-body-pain:before { content: "💪"; }
+    .icon-eye-irritation:before { content: "👁️"; }
+    .icon-bp-sugar:before { content: "🩸"; }
+    .icon-dog-bite:before { content: "🐕"; }
+    .icon-snake-bite:before { content: "🐍"; }
 
-    #voice-control button {
-      background-color: #8e24aa;
-    }
-
-    #voice-control button:hover {
-      background-color: #ab47bc;
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
   </style>
 </head>
@@ -100,26 +104,26 @@
     <h1>आयुर्वेदिक उपचार</h1>
     
     <div class="nav-buttons">
-      <button onclick="showSection('fever')">बुखार</button>
-      <button onclick="showSection('headache')">सिरदर्द</button>
-      <button onclick="showSection('cold-cough')">जुकाम और खांसी</button>
-      <button onclick="showSection('stomach-pain')">पेट दर्द</button>
-      <button onclick="showSection('body-pain')">शरीर दर्द</button>
-      <button onclick="showSection('eye-irritation')">आंखों में जलन</button>
-      <button onclick="showSection('bp-sugar')">बीपी और शुगर नियंत्रण</button>
-      <button onclick="showSection('dog-bite')">कुत्ते के काटने</button>
-      <button onclick="showSection('snake-bite')">सांप के काटने</button>
+      <button class="nav-button icon-fever" onclick="showSection('fever')">बुखार</button>
+      <button class="nav-button icon-headache" onclick="showSection('headache')">सिरदर्द</button>
+      <button class="nav-button icon-cold-cough" onclick="showSection('cold-cough')">सर्दी और खांसी</button>
+      <button class="nav-button icon-stomach-pain" onclick="showSection('stomach-pain')">पेट दर्द</button>
+      <button class="nav-button icon-body-pain" onclick="showSection('body-pain')">शरीर में दर्द</button>
+      <button class="nav-button icon-eye-irritation" onclick="showSection('eye-irritation')">आंखों में जलन</button>
+      <button class="nav-button icon-bp-sugar" onclick="showSection('bp-sugar')">बीपी और शुगर नियंत्रण</button>
+      <button class="nav-button icon-dog-bite" onclick="showSection('dog-bite')">कुत्ते के काटने पर</button>
+      <button class="nav-button icon-snake-bite" onclick="showSection('snake-bite')">सांप के काटने पर</button>
     </div>
 
     <section id="fever" class="active">
       <h2>बुखार के लिए आयुर्वेदिक उपचार</h2>
-      <p><strong>तुलसी:</strong> तुलसी (हॉली बैसिल) में शक्तिशाली सूजन-रोधी गुण होते हैं। तुलसी के पत्तों को पानी में उबालें, अदरक और शहद मिलाएं, और दिन में 2-3 बार मिश्रण पिएं।</p>
-      <p><strong>गिलोय:</strong> गिलोय की डंडी को पानी में उबालें, छानें और काढ़ा पिएं। यह प्रतिरक्षा को बढ़ाता है।</p>
-      <p><strong>शहद और अदरक:</strong> शहद और अदरक का मिश्रण शरीर का तापमान कम कर सकता है और गले को शांत करता है।</p>
-      <p><strong>हाइड्रेटेड रहें:</strong> विषाक्त पदार्थों को बाहर निकालने और हाइड्रेटेड रहने के लिए गर्म पानी और हर्बल चाय पिएं।</p>
+      <p><strong>तुलसी:</strong> तुलसी (पवित्र तुलसी) में शक्तिशाली सूजनरोधी गुण होते हैं। तुलसी के पत्तों को पानी में उबालें, उसमें अदरक और शहद मिलाएं और इसे दिन में 2-3 बार पिएं।</p>
+      <p><strong>गिलोय:</strong> गिलोय की डंडी को पानी में उबालें, छानकर इस काढ़े को पिएं। यह इम्यूनिटी बढ़ाने में मदद करता है।</p>
+      <p><strong>शहद और अदरक:</strong> शहद और अदरक का मिश्रण शरीर का तापमान कम करने और गले को शांत करने में सहायक है।</p>
+      <p><strong>हाइड्रेट रहें:</strong> विषाक्त पदार्थों को बाहर निकालने और हाइड्रेट रहने के लिए खूब गर्म पानी और हर्बल चाय पिएं।</p>
     </section>
 
-    <section id="headache">
+     <section id="headache">
       <h2>सिरदर्द के लिए आयुर्वेदिक उपचार</h2>
       <p><strong>अदरक का पेस्ट:</strong> सिर पर अदरक और पानी का पेस्ट 10-15 मिनट के लिए लगाएं ताकि दर्द में राहत मिले।</p>
       <p><strong>पुदीना तेल:</strong> अपने मंदिरों पर पुदीना तेल लगाकर मसाज करें ताकि तनाव सिरदर्द कम हो और रक्त संचार में सुधार हो।</p>
@@ -190,27 +194,75 @@
       <button class="button" onclick="concernWithDoctor()">डॉक्टर से परामर्श करें</button>
     </div>
 
+
+    <!-- Other sections go here (translated similarly) -->
+
     <script>
-      // "डॉक्टर से परामर्श करें" बटन क्लिक हैंडल करने के लिए फंक्शन
-      function concernWithDoctor() {
-        // गूगल मीट मीटिंग लिंक
-        var meetLink = "https://meet.google.com/rsp-znie-rrt"; // अपने Google Meet लिंक से बदलें
-        window.open(meetLink, '_blank');
+      // Function to show remedy in modal
+      function showSection(sectionId) {
+        const sections = document.querySelectorAll('section');
+        sections.forEach(section => section.classList.remove('active'));
+        document.getElementById(sectionId).classList.add('active');
       }
+
+    // वेब स्पीच API का उपयोग करके वॉइस रिकग्निशन शुरू करने का कार्य
+function startVoiceRecognition() {
+  const voiceResult = document.getElementById('voice-result');
+  voiceResult.innerText = 'सुन रहे हैं...';
+
+  // जांचें कि ब्राउज़र वेब स्पीच API को सपोर्ट करता है या नहीं
+  if ('webkitSpeechRecognition' in window) {
+    const recognition = new webkitSpeechRecognition();
+    
+    // रिकग्निशन के गुण सेट करें
+    recognition.lang = 'hi-IN';  // भाषा को हिंदी में सेट करें
+    recognition.continuous = false;  // बोले जाने के बाद स्वतः बंद हो जाए
+    recognition.interimResults = false;  // केवल अंतिम परिणाम लौटाएं
+
+    // रिकग्निशन शुरू करें
+    recognition.start();
+
+    // जब परिणाम मान्यता प्राप्त हो
+    recognition.onresult = function(event) {
+      const recognizedText = event.results[0][0].transcript.toLowerCase();
+      voiceResult.innerText = `आपने कहा: ${recognizedText}`;
+
+      // पहचाने गए टेक्स्ट को अनुभाग आईडी से मिलाएं
+      const sectionsMap = {
+        "बुखार": "fever",
+        "सिर दर्द": "headache",
+        "जुकाम और खांसी": "cold-cough",
+        "पेट दर्द": "stomach-pain",
+        "शरीर दर्द": "body-pain",
+        "आँखों में जलन": "eye-irritation",
+        "ब्लड प्रेशर": "bp-sugar",
+        "बीपी": "bp-sugar",
+        "शुगर नियंत्रण": "bp-sugar",
+        "कुत्ते का काटना": "dog-bite",
+        "साँप का काटना": "snake-bite"
+      };
+
+      // जाँचें कि recognizedText वैध अनुभाग से मेल खाता है या नहीं
+      if (sectionsMap[recognizedText]) {
+        showSection(sectionsMap[recognizedText]);
+      } else {
+        voiceResult.innerText = `मुझे वह समस्या समझ में नहीं आई। कृपया फिर से कोशिश करें।`;
+      }
+    };
+
+    // रिकग्निशन त्रुटियों को संभालें
+    recognition.onerror = function(event) {
+      voiceResult.innerText = `रिकग्निशन में त्रुटि हुई: ${event.error}`;
+    };
+
+  } else {
+    voiceResult.innerText = 'क्षमा करें, आपका ब्राउज़र आवाज़ पहचान का समर्थन नहीं करता है।';
+  }
+}
+
     </script>
 
   </div>
-
-  <script>
-    function showSection(sectionId) {
-      // सभी सेक्शन छिपाएं
-      const sections = document.querySelectorAll('section');
-      sections.forEach(section => section.classList.remove('active'));
-
-      // चयनित सेक्शन दिखाएं
-      document.getElementById(sectionId).classList.add('active');
-    }
-  </script>
 
 </body>
 </html>
