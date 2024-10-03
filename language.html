@@ -21,33 +21,49 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background: url('th.jpeg') no-repeat center center fixed;
-      background-size: cover;
+      background: linear-gradient(135deg, #202940, #34495e); /* Dark background gradient */
       color: #fff;
     }
 
     .container {
       text-align: center;
-      background: rgba(0, 0, 0, 0.5);
+      background: rgba(255, 255, 255, 0.1); /* Transparent overlay */
       padding: 50px;
       border-radius: 15px;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5); /* Darker shadow */
       backdrop-filter: blur(10px);
       animation: fadeIn 1.2s ease-in-out;
-      max-width: 90%;
-      width: 450px;
+      position: relative; /* Required for the overlay */
+      overflow: hidden; /* Ensure content doesn't overflow */
+    }
+
+    /* Optional: Add a semi-transparent overlay to improve text readability */
+    .container::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5); /* Black overlay with 50% opacity */
+      z-index: 1; /* Place the overlay below the text */
+      border-radius: 15px; /* Match the container's border radius */
     }
 
     h1 {
       font-size: 3em;
       margin-bottom: 40px;
-      text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+      text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.5); /* Darker text shadow */
       letter-spacing: 1px;
+      position: relative; /* Required to position text above overlay */
+      z-index: 2; /* Ensure text is above the overlay */
     }
 
     p {
       font-size: 1.5em;
       margin-bottom: 20px;
+      position: relative;
+      z-index: 2;
     }
 
     .button {
@@ -56,18 +72,20 @@
       margin: 10px;
       font-size: 1.5em;
       font-weight: bold;
-      color: #fff; /* Text color for contrast */
+      color: #fff;
       text-decoration: none;
       border-radius: 30px;
-      background: linear-gradient(135deg, #007bff, #0056b3); /* Blue gradient for buttons */
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      background: linear-gradient(135deg, #4fc7ff, #7c7cda); /* Matching button gradient */
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Slightly darker shadow */
       transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
       cursor: pointer;
+      position: relative;
+      z-index: 2;
     }
 
     .button:hover {
-      background: linear-gradient(135deg, #0056b3, #004085); /* Darker blue on hover */
-      transform: scale(1.05);
+      background: linear-gradient(135deg, #3da7e5, #6b6bba);
+      transform: scale(1.1);
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
     }
 
@@ -80,6 +98,8 @@
       font-size: 1.5em;
       margin-bottom: 10px;
       display: block;
+      position: relative;
+      z-index: 2;
     }
 
     .range {
@@ -91,6 +111,8 @@
       background: #fff;
       outline: none;
       transition: background 0.3s;
+      position: relative;
+      z-index: 2;
     }
 
     .range::-webkit-slider-thumb {
@@ -99,7 +121,7 @@
       width: 20px;
       height: 20px;
       border-radius: 50%;
-      background: #007bff; /* Thumb color matches button color */
+      background: #4fc7ff;
       cursor: pointer;
       transition: transform 0.3s;
     }
@@ -112,6 +134,8 @@
       font-size: 1.8em;
       margin-top: 10px;
       color: #fff;
+      position: relative;
+      z-index: 2;
     }
 
     @keyframes fadeIn {
@@ -121,18 +145,6 @@
 
     .active {
       border: 2px solid #fff;
-    }
-
-    .submit-container {
-      margin-top: 30px;
-    }
-
-    .submit-container .button {
-      background: linear-gradient(135deg, #28a745, #218838); /* Green gradient for submit button */
-    }
-
-    .submit-container .button:hover {
-      background: linear-gradient(135deg, #218838, #1e7e34); /* Darker green on hover */
     }
   </style>
 </head>
